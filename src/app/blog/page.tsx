@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from '../../contexts/LanguageContext';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function Blog() {
   const { t } = useLanguage();
@@ -12,6 +14,9 @@ export default function Blog() {
       key: 'youthBand',
       image: "/assets/Full youth band practicing for worship.jpg",
       alt: "Full youth band practicing for worship",
+      title: "Youth Worship Band",
+      date: "January 15, 2024",
+      excerpt: "We're grateful to God for the musical talents in our community. Our youth band has been practicing to prepare for this week's worship service...",
       content: `We're grateful to God for the musical talents in our community. Our youth band has been practicing to prepare for this week's worship service. We're learning that worship isn't just about music, but about offering our best to God.
 
 Every Tuesday and Thursday evening, our youth gather in the church basement to practice songs for Sunday worship. This week, they've been working on "How Great Thou Art" and "Amazing Grace" - two timeless hymns that remind us of God's majesty and love.
@@ -26,6 +31,9 @@ If you're interested in joining the youth band or have musical talents to share,
       key: 'crossCultural',
       image: "/assets/Meredith and Nguyen Anh duet Thank you Jesus for the Blood.jpg",
       alt: "Meredith and Nguyen Anh duet Thank you Jesus for the Blood",
+      title: "Cross-Cultural Worship",
+      date: "January 10, 2024",
+      excerpt: "We're thankful for the special collaboration between Meredith and Nguyen Anh in our worship service. The song 'Thank You Jesus for the Blood' reminded us of God's unconditional love...",
       content: `We're thankful for the special collaboration between Meredith and Nguyen Anh in our worship service. The song "Thank You Jesus for the Blood" reminded us of God's unconditional love. We're learning that music can transcend language and cultural barriers.
 
 Meredith, who has been attending our church for the past year, approached Nguyen Anh with the idea of singing this powerful worship song together. Despite the language differences, they found common ground in their love for God and desire to worship Him.
@@ -42,6 +50,9 @@ If you're interested in participating in our worship ministry or have ideas for 
       key: 'youthFellowship',
       image: "/assets/Youth gathers at house for fellowship and karaoke.jpg",
       alt: "Youth gathers at house for fellowship and karaoke",
+      title: "Youth Fellowship",
+      date: "January 5, 2024",
+      excerpt: "We believe friendship and fellowship are important parts of Christian life. Our youth had a wonderful evening at a member's home, singing karaoke and sharing life together...",
       content: `We believe friendship and fellowship are important parts of Christian life. Our youth had a wonderful evening at a member's home, singing karaoke and sharing life together. We're learning that God wants us to have fun and enjoy friendship with each other.
 
 The event was organized by our youth leaders as a way to build deeper relationships outside of regular church activities. About 15 young people gathered at the home of the Nguyen family, who generously opened their home for this fellowship time.
@@ -60,6 +71,9 @@ If you're a young person looking for Christian fellowship and friendship, we'd l
       key: 'tetCelebration',
       image: "/assets/Tet Holiday Event 2025 _ Ladies in Traditional Dress.jpg",
       alt: "Tet Holiday Event 2025 _ Ladies in Traditional Dress",
+      title: "Tet Celebration",
+      date: "December 30, 2023",
+      excerpt: "We're grateful to God for the opportunity to celebrate Tet in our community. The ladies wore beautiful traditional dresses, showing pride in Vietnamese culture...",
       content: `We're grateful to God for the opportunity to celebrate Tet in our community. The ladies wore beautiful traditional dresses, showing pride in Vietnamese culture. We're learning that God loves cultural diversity and wants us to honor Him through our culture.
 
 Our Tet celebration was a wonderful blend of traditional Vietnamese customs and Christian worship. The event began with a special prayer service, where we thanked God for the past year and asked for His blessing in the new year.
@@ -77,80 +91,60 @@ We're thankful for all the volunteers who helped organize this special event, an
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <header className="bg-white border-b-2 border-gray-300 sticky top-0 z-50 shadow-lg">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <Link href="/" className="flex items-center space-x-4 hover:opacity-80 transition-opacity">
-                <div className="w-14 h-14 bg-gradient-to-br from-orange-600 to-red-700 rounded-2xl flex items-center justify-center shadow-xl">
-                  <span className="text-white font-bold text-2xl">✝</span>
-                </div>
-                <div>
-                  <h1 className="text-2xl font-bold text-gray-900">{t('church.name')}</h1>
-                  <p className="text-sm text-gray-700 font-semibold">{t('church.subtitle')}</p>
-                </div>
-              </Link>
-            </div>
-            <Link href="/" className="bg-orange-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-orange-700 transition-colors shadow-xl text-lg">
-              ← Back to Home
-            </Link>
-          </div>
-        </div>
-      </header>
-
+    <div className="min-h-screen bg-white">
+      <Header />
+      
       {/* Hero Section */}
-      <section className="py-20 px-6 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl lg:text-6xl font-black text-gray-900 mb-8">
-            {t('stories.title')}
-          </h1>
-          <p className="text-2xl text-gray-800 leading-relaxed font-semibold">
-            {t('stories.subtitle')}
-          </p>
+      <section className="section-sm bg-gray-50">
+        <div className="container">
+          <div className="max-w-4xl mx-auto text-center">
+            <h1 className="heading-1 text-gray-900 mb-6">
+              {t('stories.title')}
+            </h1>
+            <p className="text-large text-gray-700">
+              {t('stories.subtitle')}
+            </p>
+          </div>
         </div>
       </section>
 
       {/* Blog Posts */}
-      <section className="py-24 px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="space-y-20">
+      <section className="section">
+        <div className="container">
+          <div className="max-w-4xl mx-auto space-y-16">
             {blogPosts.map((post, index) => (
-              <article key={post.key} className="bg-white rounded-3xl overflow-hidden shadow-2xl hover:shadow-3xl transition-shadow border-2 border-gray-200">
-                <div className="relative h-96 lg:h-[500px]">
+              <article key={post.key} className="card-hover">
+                <div className="relative h-64 md:h-80 overflow-hidden">
                   <Image
                     src={post.image}
                     alt={post.alt}
                     fill
                     className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
                 </div>
                 
-                <div className="p-12">
-                  <div className="flex items-center space-x-4 mb-8">
-                    <span className="text-orange-500 text-3xl">📅</span>
-                    <span className="text-xl text-gray-700 font-bold">{t(`stories.posts.${post.key}.date`)}</span>
+                <div className="p-8">
+                  <div className="flex items-center space-x-4 mb-4">
+                    <span className="text-blue-600 text-sm font-medium">{post.date}</span>
                   </div>
                   
-                  <h2 className="text-4xl lg:text-5xl font-black text-gray-900 mb-8 leading-tight">
-                    {t(`stories.posts.${post.key}.title`)}
+                  <h2 className="heading-3 text-gray-900 mb-4">
+                    {post.title}
                   </h2>
                   
-                  <div className="prose prose-lg max-w-none">
-                    {post.content.split('\n\n').map((paragraph, pIndex) => (
-                      <p key={pIndex} className="text-gray-800 leading-relaxed font-semibold text-lg mb-6">
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
+                  <p className="text-body text-gray-600 mb-6">
+                    {post.excerpt}
+                  </p>
                   
-                  <div className="mt-12 pt-8 border-t-2 border-gray-200">
-                    <Link href="/" className="text-orange-600 font-bold hover:text-orange-700 text-xl">
-                      ← Back to Home
-                    </Link>
-                  </div>
+                  <Link 
+                    href={`/blog/${post.key}`} 
+                    className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-700 transition-colors"
+                  >
+                    Read full story
+                    <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
                 </div>
               </article>
             ))}
@@ -158,31 +152,7 @@ We're thankful for all the volunteers who helped organize this special event, an
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16 px-6">
-        <div className="max-w-7xl mx-auto text-center">
-          <div className="flex items-center justify-center space-x-4 mb-8">
-            <div className="w-14 h-14 bg-gradient-to-br from-orange-600 to-red-700 rounded-2xl flex items-center justify-center shadow-xl">
-              <span className="text-white font-bold text-2xl">✝</span>
-            </div>
-            <div>
-              <h4 className="text-2xl font-black">{t('church.name')}</h4>
-              <p className="text-gray-400 font-semibold">{t('church.subtitle')}</p>
-            </div>
-          </div>
-          <p className="text-gray-400 leading-relaxed mb-8 font-semibold text-lg max-w-4xl mx-auto">
-            {t('footer.description')}
-          </p>
-          <div className="flex justify-center space-x-4">
-            <Link href="/" className="bg-orange-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-700 transition-colors shadow-xl text-lg">
-              {t('footer.planVisit')}
-            </Link>
-          </div>
-          <div className="border-t-2 border-gray-800 mt-12 pt-8">
-            <p className="font-bold text-lg text-gray-400">{t('footer.copyright')}</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 } 

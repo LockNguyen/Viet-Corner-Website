@@ -5,7 +5,6 @@
   "description": "A beautiful, culturally appropriate website for a Vietnamese evangelical church that emphasizes humility, community, and authentic faith sharing.",
   "scripts": {
     "dev": "next dev",
-    "dev:port": "next dev --port 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
