@@ -1,0 +1,184 @@
+{
+  "en": {
+    "church": {
+      "name": "Hoi Thanh Tin Lanh Viet Nam",
+      "subtitle": "Vietnamese Evangelical Church"
+    },
+    "navigation": {
+      "about": "About Us",
+      "stories": "Our Stories",
+      "events": "Events",
+      "contact": "Contact",
+      "joinUs": "Join Us"
+    },
+    "hero": {
+      "title": "Making God Known",
+      "subtitle": "Through Life Together",
+      "description": "Join us at the Vietnamese Evangelical Church as we inspire one another to love God and do good. We're a simple community learning and growing in faith together.",
+      "planVisit": "Plan Your Visit",
+      "ourStories": "Our Stories"
+    },
+    "welcome": {
+      "title": "We're glad you're here",
+      "description": "Jesus was a simple man with a simple plan to make God known. Together, we constantly look at Jesus through God's Word, inspired to become whatever destiny requires so that we can give hope to the many still unfamiliar with God's amazing love."
+    },
+    "ministries": {
+      "title": "We are a church dedicated to walking with God",
+      "subtitle": "We believe that what makes church special is not only the Sunday sermon, but also the spiritual connections we build with God and each other.",
+      "sundayServices": {
+        "title": "Sunday Services",
+        "description": "Join us for engaging and faith-building messages from the Bible, along with singing, fellowship, and classes for kids.",
+        "link": "View times →"
+      },
+      "smallGroups": {
+        "title": "Small Groups",
+        "description": "Connect with friends at a similar life point in your neighborhood. Get to know each other on a deeper level through discussions about God and life.",
+        "link": "Get connected →"
+      },
+      "bibleStudies": {
+        "title": "Bible Studies",
+        "description": "Studying the Bible for ourselves helps us learn about a God who loves us, cares for us, and has a plan for our lives.",
+        "link": "Learn more →"
+      },
+      "communityImpact": {
+        "title": "Community Impact",
+        "description": "We are striving to make a difference in the lives of all Vietnamese residents, regardless of religious affiliation.",
+        "link": "Get involved →"
+      }
+    },
+    "stories": {
+      "title": "Stories of God at Work",
+      "subtitle": "Inspiring stories and highlights about the impact God is making through our church community.",
+      "viewAll": "View all stories →",
+      "posts": {
+        "youthBand": {
+          "title": "Youth Band Practicing for Worship",
+          "date": "This Week",
+          "excerpt": "We're grateful to God for the musical talents in our community. Our youth band has been practicing to prepare for this week's worship service. We're learning that worship isn't just about music, but about offering our best to God..."
+        },
+        "crossCultural": {
+          "title": "Cross-Cultural Worship: \"Thank You Jesus for the Blood\"",
+          "date": "Last Week",
+          "excerpt": "We're thankful for the special collaboration between Meredith and Nguyen Anh in our worship service. The song \"Thank You Jesus for the Blood\" reminded us of God's unconditional love..."
+        },
+        "youthFellowship": {
+          "title": "Youth Fellowship: Karaoke Night",
+          "date": "2 weeks ago",
+          "excerpt": "We believe friendship and fellowship are important parts of Christian life. Our youth had a wonderful evening at a member's home, singing karaoke and sharing life together..."
+        },
+        "tetCelebration": {
+          "title": "Tet Celebration: Traditional Dress & Culture",
+          "date": "January 2025",
+          "excerpt": "We're grateful to God for the opportunity to celebrate Tet in our community. The ladies wore beautiful traditional dresses, showing pride in Vietnamese culture..."
+        }
+      }
+    },
+    "events": {
+      "title": "Upcoming Events",
+      "subtitle": "Join us for these upcoming events and activities in our community.",
+      "viewCalendar": "View Full Calendar"
+    },
+    "contact": {
+      "title": "Join us at the Vietnamese Evangelical Church",
+      "subtitle": "We're striving to love God and serve our community. Come be part of what God is building."
+    },
+    "footer": {
+      "description": "We are a simple community learning and growing in faith together. We believe in making God known through life-on-life discipleship and authentic relationships.",
+      "planVisit": "Plan Your Visit",
+      "quickLinks": "Quick Links",
+      "contactInfo": "Contact Info",
+      "copyright": "© 2024 Vietnamese Evangelical Church. All rights reserved."
+    }
+  },
+  "vi": {
+    "church": {
+      "name": "Hội Thánh Tin Lành Việt Nam",
+      "subtitle": "Vietnamese Evangelical Church"
+    },
+    "navigation": {
+      "about": "Về Chúng Tôi",
+      "stories": "Câu Chuyện",
+      "events": "Sự Kiện",
+      "contact": "Liên Hệ",
+      "joinUs": "Tham Gia"
+    },
+    "hero": {
+      "title": "Làm Cho Chúa Được Biết",
+      "subtitle": "Qua Cuộc Sống Cùng Nhau",
+      "description": "Hãy tham gia cùng chúng tôi tại Hội Thánh Tin Lành Việt Nam khi chúng tôi khuyến khích nhau yêu mến Chúa và làm điều thiện. Chúng tôi là một cộng đồng đơn giản học hỏi và lớn lên trong đức tin cùng nhau.",
+      "planVisit": "Lên Kế Hoạch Thăm Viếng",
+      "ourStories": "Câu Chuyện Của Chúng Tôi"
+    },
+    "welcome": {
+      "title": "Chúng tôi vui mừng khi bạn ở đây",
+      "description": "Chúa Giê-su là một người đơn giản với một kế hoạch đơn giản để làm cho Chúa được biết. Cùng nhau, chúng tôi liên tục nhìn vào Chúa Giê-su qua Lời Chúa, được truyền cảm hứng để trở thành bất cứ điều gì định mệnh yêu cầu."
+    },
+    "ministries": {
+      "title": "Chúng tôi là một hội thánh dành riêng để đi cùng với Chúa",
+      "subtitle": "Chúng tôi tin rằng điều làm cho hội thánh đặc biệt không chỉ là bài giảng Chủ nhật, mà còn là những kết nối thuộc linh chúng tôi xây dựng với Chúa và với nhau.",
+      "sundayServices": {
+        "title": "Thờ Phượng Chủ Nhật",
+        "description": "Hãy tham gia cùng chúng tôi cho những thông điệp hấp dẫn và xây dựng đức tin từ Kinh Thánh, cùng với ca hát, giao thông, và các lớp học cho trẻ em.",
+        "link": "Xem giờ →"
+      },
+      "smallGroups": {
+        "title": "Nhóm Nhỏ",
+        "description": "Kết nối với bạn bè ở cùng một điểm cuộc sống trong khu phố của bạn. Hiểu biết nhau ở mức độ sâu hơn thông qua các cuộc thảo luận về Chúa và cuộc sống.",
+        "link": "Kết nối →"
+      },
+      "bibleStudies": {
+        "title": "Nghiên Cứu Kinh Thánh",
+        "description": "Nghiên cứu Kinh Thánh cho chính mình giúp chúng ta học về một Chúa yêu thương chúng ta, chăm sóc chúng ta, và có kế hoạch cho cuộc sống của chúng ta.",
+        "link": "Tìm hiểu thêm →"
+      },
+      "communityImpact": {
+        "title": "Tác Động Cộng Đồng",
+        "description": "Chúng tôi đang nỗ lực tạo ra sự khác biệt trong cuộc sống của tất cả cư dân Việt Nam, bất kể tôn giáo.",
+        "link": "Tham gia →"
+      }
+    },
+    "stories": {
+      "title": "Câu Chuyện Về Công Việc Của Chúa",
+      "subtitle": "Những câu chuyện truyền cảm hứng và điểm nổi bật về tác động Chúa đang tạo ra qua cộng đồng hội thánh của chúng tôi.",
+      "viewAll": "Xem tất cả câu chuyện →",
+      "posts": {
+        "youthBand": {
+          "title": "Ban Nhạc Thanh Niên Tập Luyện Cho Sự Thờ Phượng",
+          "date": "Tuần Này",
+          "excerpt": "Chúng tôi cảm ơn Chúa vì những tài năng âm nhạc trong cộng đồng của chúng tôi. Ban nhạc thanh niên của chúng tôi đã tập luyện để chuẩn bị cho sự thờ phượng tuần này..."
+        },
+        "crossCultural": {
+          "title": "Sự Thờ Phượng Xuyên Văn Hóa: \"Cảm Ơn Chúa Jesus Vì Máu\"",
+          "date": "Tuần Trước",
+          "excerpt": "Chúng tôi cảm ơn sự hợp tác đặc biệt giữa Meredith và Nguyễn Anh trong sự thờ phượng của chúng tôi. Bài hát \"Cảm Ơn Chúa Jesus Vì Máu\" nhắc chúng tôi nhớ về tình yêu vô điều kiện của Chúa..."
+        },
+        "youthFellowship": {
+          "title": "Hội Thanh Niên: Đêm Karaoke",
+          "date": "2 tuần trước",
+          "excerpt": "Chúng tôi tin rằng tình bạn và sự giao thông là những phần quan trọng của đời sống tin đồ. Thanh niên chúng tôi đã có một buổi tối tuyệt vời tại nhà một thành viên..."
+        },
+        "tetCelebration": {
+          "title": "Lễ Tết: Áo Dài Truyền Thống & Văn Hóa",
+          "date": "Tháng 1 năm 2025",
+          "excerpt": "Chúng tôi cảm ơn Chúa vì cơ hội chúc mừng Tết trong cộng đồng của chúng tôi. Các quý bà mặc những chiếc áo dài đẹp, thể hiện niềm tự hào về văn hóa Việt Nam..."
+        }
+      }
+    },
+    "events": {
+      "title": "Sự Kiện Sắp Tới",
+      "subtitle": "Hãy tham gia cùng chúng tôi cho những sự kiện và hoạt động sắp tới trong cộng đồng của chúng tôi.",
+      "viewCalendar": "Xem Lịch Đầy Đủ"
+    },
+    "contact": {
+      "title": "Hãy tham gia cùng chúng tôi tại Hội Thánh Tin Lành Việt Nam",
+      "subtitle": "Chúng tôi đang nỗ lực yêu mến Chúa và phục vụ cộng đồng của chúng tôi. Hãy đến và là một phần của những gì Chúa đang xây dựng."
+    },
+    "footer": {
+      "description": "Chúng tôi là một cộng đồng đơn giản học hỏi và lớn lên trong đức tin cùng nhau. Chúng tôi tin vào việc làm cho Chúa được biết qua môn đồ hóa đời sống và những mối quan hệ chân thật.",
+      "planVisit": "Lên Kế Hoạch Thăm Viếng",
+      "quickLinks": "Liên Kết Nhanh",
+      "contactInfo": "Thông Tin Liên Hệ",
+      "copyright": "© 2024 Hội Thánh Tin Lành Việt Nam. Tất cả quyền được bảo lưu."
+    }
+  }
+} 
