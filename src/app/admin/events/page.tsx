@@ -106,11 +106,12 @@ export default function AdminPage() {
         <Footer />
 
         {eventToDelete && (
-            <DeleteConfirmModal
-            event={eventToDelete}
+          <DeleteConfirmModal
+            entityType="Event"
+            entityName={eventToDelete.title}
             onConfirm={confirmDelete}
             onCancel={() => setEventToDelete(null)}
-            />
+          />
         )}
         </div>
     </AuthGuard>

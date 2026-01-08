@@ -2,8 +2,6 @@ export interface DiscipleshipCourse {
   id: string;
   name: string;
   description?: string | null;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 export interface DiscipleshipLocation {
@@ -11,8 +9,6 @@ export interface DiscipleshipLocation {
   courseId: string;
   name: string;
   thumbnailImageUrl?: string | null;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 export interface DiscipleshipClass {
@@ -23,8 +19,6 @@ export interface DiscipleshipClass {
   endTime: Date;
   contact?: string | null;
   passage?: string | null;
-  createdAt: Date;
-  updatedAt: Date;
 }
 
 export interface DiscipleshipFormData {

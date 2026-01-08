@@ -30,8 +30,6 @@ export const discipleshipService = {
       return snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data(),
-        createdAt: doc.data().createdAt?.toDate() || new Date(),
-        updatedAt: doc.data().updatedAt?.toDate() || new Date(),
       })) as DiscipleshipCourse[];
     } catch (error) {
       console.error('Error fetching courses:', error);
@@ -49,8 +47,6 @@ export const discipleshipService = {
       return {
         id: courseDoc.id,
         ...courseDoc.data(),
-        createdAt: courseDoc.data().createdAt?.toDate() || new Date(),
-        updatedAt: courseDoc.data().updatedAt?.toDate() || new Date(),
       } as DiscipleshipCourse;
     } catch (error) {
       console.error('Error fetching course:', error);
@@ -123,8 +119,6 @@ export const discipleshipService = {
         id: doc.id,
         courseId,
         ...doc.data(),
-        createdAt: doc.data().createdAt?.toDate() || new Date(),
-        updatedAt: doc.data().updatedAt?.toDate() || new Date(),
       })) as DiscipleshipLocation[];
     } catch (error) {
       console.error('Error fetching locations:', error);
@@ -143,8 +137,6 @@ export const discipleshipService = {
         id: locationDoc.id,
         courseId,
         ...locationDoc.data(),
-        createdAt: locationDoc.data().createdAt?.toDate() || new Date(),
-        updatedAt: locationDoc.data().updatedAt?.toDate() || new Date(),
       } as DiscipleshipLocation;
     } catch (error) {
       console.error('Error fetching location:', error);
