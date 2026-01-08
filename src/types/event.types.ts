@@ -10,9 +10,7 @@ export interface EventEntity {
   startDateTime?: Date | null;
   endDateTime?: Date | null;
   isActive: boolean;
-  recurring: boolean; // NEW
-  createdAt: Date;
-  updatedAt: Date;
+  recurring: boolean;
   order: number;
 }
 

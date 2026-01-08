@@ -37,8 +37,6 @@ export function useDiscipleshipClasses(courseId: string | null, locationId: stri
           ...doc.data(),
           startTime: doc.data().startTime?.toDate() || new Date(),
           endTime: doc.data().endTime?.toDate() || new Date(),
-          createdAt: doc.data().createdAt?.toDate() || new Date(),
-          updatedAt: doc.data().updatedAt?.toDate() || new Date(),
         })) as DiscipleshipClass[];
         
         setClasses(classesData);

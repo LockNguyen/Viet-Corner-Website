@@ -18,7 +18,7 @@ export function useDiscipleshipLocations(courseId: string | null) {
     }
 
     const locationsRef = collection(db, 'discipleshipCourses', courseId, 'discipleshipLocations');
-    const q = query(locationsRef, orderBy('createdAt', 'asc'));
+    const q = query(locationsRef);
 
     const unsubscribe = onSnapshot(
       q,
