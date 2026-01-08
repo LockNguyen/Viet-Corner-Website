@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useLanguage } from '../../contexts/LanguageContext';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { useLanguage } from '@/contexts/LanguageContext';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default function Blog() {
   const { t } = useLanguage();
