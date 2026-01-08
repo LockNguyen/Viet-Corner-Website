@@ -4,8 +4,8 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { eventService } from '@/services/eventService';
 import { useEventForm } from '@/hooks/useEventForm';
-import ImageGallery from '../shared/ImageSelector';
 import type { EventEntity } from '@/types/event.types';
+import ImageSelector from '../shared/ImageSelector';
 
 interface EventFormProps {
   event?: EventEntity | null;
@@ -69,16 +69,6 @@ export default function EventForm({ event, mode, onSuccess, onCancel }: EventFor
     } finally {
       setIsSubmitting(false);
     }
-  };
-
-  const handleThumbnailSelect = (url: string) => {
-    handleChange('thumbnailImageUrl', url);
-    setShowThumbnailGallery(false);
-  };
-
-  const handleHeroSelect = (url: string) => {
-    handleChange('heroImageUrl', url);
-    setShowHeroGallery(false);
   };
 
   return (
@@ -236,9 +226,10 @@ export default function EventForm({ event, mode, onSuccess, onCancel }: EventFor
                   Cancel
                 </button>
               </div>
-              <ImageGallery
-                onSelect={handleThumbnailSelect}
-                currentImageUrl={formData.thumbnailImageUrl}
+              <ImageSelector
+                value={formData.thumbnailImageUrl || null}
+                onChange={(url) => handleChange('thumbnailImageUrl', url)}
+                label="Thumbnail Image"
               />
             </div>
           )}
@@ -286,9 +277,10 @@ export default function EventForm({ event, mode, onSuccess, onCancel }: EventFor
                   Cancel
                 </button>
               </div>
-              <ImageGallery
-                onSelect={handleHeroSelect}
-                currentImageUrl={formData.heroImageUrl}
+              <ImageSelector
+                value={formData.heroImageUrl || null}
+                onChange={(url) => handleChange('heroImageUrl', url)}
+                label="Hero Image"
               />
             </div>
           )}
