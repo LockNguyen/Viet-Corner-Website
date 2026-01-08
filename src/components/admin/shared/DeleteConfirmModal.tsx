@@ -1,15 +1,22 @@
 'use client';
 
 import { useState } from 'react';
-import type { EventEntity } from '@/types/event.types';
 
 interface DeleteConfirmModalProps {
-  event: EventEntity;
+  entityType: string;
+  entityName: string;
   onConfirm: () => Promise<void>;
   onCancel: () => void;
+  warningMessage?: string;
 }
 
-export default function DeleteConfirmModal({ event, onConfirm, onCancel }: DeleteConfirmModalProps) {
+export default function DeleteConfirmModal({ 
+  entityType, 
+  entityName, 
+  onConfirm, 
+  onCancel,
+  warningMessage 
+}: DeleteConfirmModalProps) {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleConfirm = async () => {
@@ -18,16 +25,17 @@ export default function DeleteConfirmModal({ event, onConfirm, onCancel }: Delet
       await onConfirm();
     } catch (error) {
       console.error('Delete failed:', error);
+      alert('Failed to delete. Please try again.');
     } finally {
       setIsDeleting(false);
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
       <div className="absolute inset-0 bg-black bg-opacity-50" onClick={onCancel} />
       
-      <div className="relative bg-white rounded-lg shadow-xl max-w-md w-full mx-4 p-6">
+      <div className="relative bg-white rounded-lg shadow-xl max-w-md w-full p-6">
         <div className="flex items-start">
           <div className="flex-shrink-0">
             <svg className="h-6 w-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -36,10 +44,18 @@ export default function DeleteConfirmModal({ event, onConfirm, onCancel }: Delet
           </div>
           <div className="ml-3 flex-1">
             <h3 className="text-lg font-medium text-gray-900 mb-2">
-              Delete Event
+              Delete {entityType}
             </h3>
+            <p className="text-sm text-gray-500 mb-2">
+              Are you sure you want to delete <strong>{entityName}</strong>?
+            </p>
+            {warningMessage && (
+              <p className="text-sm text-red-600 font-medium mb-4">
+                ⚠️ {warningMessage}
+              </p>
+            )}
             <p className="text-sm text-gray-500 mb-4">
-              Are you sure you want to delete <strong>{event.title}</strong>? This action cannot be undone.
+              This action cannot be undone.
             </p>
             <div className="flex gap-3">
               <button

@@ -27,8 +27,6 @@ export const eventService = {
       return snapshot.docs.map(doc => ({
         id: doc.id,
         ...doc.data(),
-        createdAt: doc.data().createdAt?.toDate() || new Date(),
-        updatedAt: doc.data().updatedAt?.toDate() || new Date(),
         startDateTime: doc.data().startDateTime?.toDate() || null,
         endDateTime: doc.data().endDateTime?.toDate() || null,
       })) as EventEntity[];
@@ -48,8 +46,6 @@ export const eventService = {
       return {
         id: eventDoc.id,
         ...eventDoc.data(),
-        createdAt: eventDoc.data().createdAt?.toDate() || new Date(),
-        updatedAt: eventDoc.data().updatedAt?.toDate() || new Date(),
         startDateTime: eventDoc.data().startDateTime?.toDate() || null,
         endDateTime: eventDoc.data().endDateTime?.toDate() || null,
       } as EventEntity;
@@ -80,10 +76,8 @@ export const eventService = {
       const eventData = {
         ...data,
         dateDisplay, // Auto-generated
-        createdAt: now,
-        updatedAt: now,
         order: maxOrder + 1,
-        recurring: data.recurring ?? false, // NEW
+        recurring: data.recurring ?? false,
         startDateTime: data.startDateTime 
           ? Timestamp.fromDate(new Date(data.startDateTime)) 
           : null,
@@ -114,8 +108,7 @@ export const eventService = {
         : undefined;
 
       const updateData: any = {
-        ...data,
-        updatedAt: Timestamp.now(),
+        ...data
       };
 
       if (data.startDateTime) {
@@ -149,8 +142,7 @@ export const eventService = {
       events.forEach((event, index) => {
         const eventRef = doc(db, COLLECTION_NAME, event.id);
         batch.update(eventRef, { 
-          order: index,
-          updatedAt: Timestamp.now(),
+          order: index
         });
       });
 

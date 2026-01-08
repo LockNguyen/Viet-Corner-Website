@@ -35,8 +35,6 @@ export function useEvents() {
           return {
             id: doc.id,
             ...data,
-            createdAt: data.createdAt?.toDate() || new Date(),
-            updatedAt: data.updatedAt?.toDate() || new Date(),
             startDateTime,
             endDateTime,
             recurring: data.recurring ?? false,

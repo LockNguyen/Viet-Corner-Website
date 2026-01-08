@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 import { eventService } from '@/services/eventService';
 import { useEventForm } from '@/hooks/useEventForm';
-import ImageGallery from './ImageGallery';
+import ImageGallery from '../shared/ImageSelector';
 import type { EventEntity } from '@/types/event.types';
 
 interface EventFormProps {
