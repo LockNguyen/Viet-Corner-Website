@@ -15,6 +15,7 @@
 - SEO: Use `generateMetadata` in locale layout with `getTranslations({ locale, namespace: 'metadata' })` for localized metadata
 - hreflang alternates: Use `metadata.alternates.languages` object (not manual link tags) for Next.js to generate hreflang links
 - Always verify translation keys match between components and JSON files - missing keys cause runtime MISSING_MESSAGE errors
+- Schema generators output to: TypeScript→src/types/generated/, Dart→church_app/lib/data/models/generated/, Rules→firestore/
 
 ---
 
@@ -235,4 +236,22 @@ Thread: https://ampcode.com/threads/T-019bdb92-91a8-75f5-9e4b-97a4b269ca0d
   - Dart filenames must use underscores not hyphens (file_names lint rule)
   - Custom generator avoids quicktype dependency overhead
   - copyWith params should always be nullable (`String? id`) to allow passing null for "no change"
+---
+
+## 2026-01-20 - US-016
+Thread: https://ampcode.com/threads/T-019bdb95-3ed0-73de-896b-c7bd9efdd148
+- Created scripts/generate-rules.ts following same patterns as generate-types.ts and generate-dart.ts
+- Generates validation helper functions for Firestore security rules
+- For each schema generates:
+  - `isValid{SchemaTitle}(data)` - validates required fields exist and all field types are correct
+  - `{schemaTitle}HasOnlyFields(data)` - ensures no extra fields are present
+- Output to /firestore/validation.rules with complete example rules
+- Created /firestore/README.md documenting the generated functions
+- Added npm script: generate:rules
+- Files changed: package.json, scripts/generate-rules.ts, firestore/validation.rules, firestore/README.md
+- **Learnings for future iterations:**
+  - Firestore rules use `is string`, `is number`, `is bool` for type checks
+  - Use `'fieldName' in data` to check field existence
+  - For optional/nullable fields: `(!('field' in data) || data.field == null || data.field is type)`
+  - `data.keys().hasOnly([...])` prevents extra fields
 ---

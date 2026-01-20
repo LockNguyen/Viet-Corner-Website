@@ -249,8 +249,8 @@
                 "Add npm script: generate:rules"
             ],
             "priority": 16,
-            "passes": false,
-            "notes": ""
+            "passes": true,
+            "notes": "Output path: /firestore/validation.rules with README.md. Generates isValid*() and *HasOnlyFields() functions for each schema."
         },
         {
             "id": "US-017",
