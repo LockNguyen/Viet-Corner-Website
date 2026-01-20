@@ -61,8 +61,8 @@
                 "View page source shows fully rendered HTML (proves SSG)"
             ],
             "priority": 4,
-            "passes": false,
-            "notes": ""
+            "passes": true,
+            "notes": "Already implemented in US-003 via generateStaticParams in [locale]/layout.tsx. All routes show ● (SSG) in build output."
         },
         {
             "id": "US-005",
