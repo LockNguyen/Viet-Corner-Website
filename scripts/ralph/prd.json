@@ -91,8 +91,8 @@
                 "npm run dev shows no console errors"
             ],
             "priority": 6,
-            "passes": false,
-            "notes": ""
+            "passes": true,
+            "notes": "Migrated Welcome, Header, Footer, Hero, Ministries, Stories, ContactForm, blog, and admin pages to useTranslations()"
         },
         {
             "id": "US-007",
@@ -107,8 +107,8 @@
                 "Verify in browser: toggle works on admin pages"
             ],
             "priority": 7,
-            "passes": false,
-            "notes": ""
+            "passes": true,
+            "notes": "Created routing.ts and navigation.ts. LanguageToggle now uses next-intl useRouter with locale-aware URL switching. Middleware sets NEXT_LOCALE cookie automatically."
         },
         {
             "id": "US-008",

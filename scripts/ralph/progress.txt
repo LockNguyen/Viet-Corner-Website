@@ -8,6 +8,10 @@
 - Root layout remains minimal (html/body only), providers go in locale layout
 - SSG: `generateStaticParams` in layout propagates to all child pages - no need to add it to each page
 - Server Components use `getTranslations('namespace')` from 'next-intl/server', Client Components use `useTranslations('namespace')`
+- useTranslations() returns function directly: `const t = useTranslations()` (not `const { t } = ...`)
+- Use `defineRouting()` in src/i18n/routing.ts and `createNavigation(routing)` in src/i18n/navigation.ts for locale-aware navigation
+- For locale switching: use `useRouter` from '@/i18n/navigation' with `router.replace(pathname, { locale: nextLocale })`
+- next-intl middleware automatically sets NEXT_LOCALE cookie for language persistence
 
 ---
 
@@ -73,4 +77,36 @@ Thread: https://ampcode.com/threads/T-019bd949-ea17-72d6-9177-4883bf9f9e36
   - Server Components can render Client Components as children - they don't need translations themselves
   - `getTranslations('namespace')` returns a function that works like `t('key')` for server-side
   - Privacy page shows 204 B size in build output - pure Server Component with minimal JS
+---
+
+## 2026-01-19 - US-006
+Thread: https://ampcode.com/threads/T-019bd94c-7bcc-706a-8bf3-7d21e1e037be
+- Migrated all client components from useLanguage() to useTranslations() from next-intl
+- Updated components: Welcome, Header, Footer, Hero, Ministries, Stories, ContactForm
+- Updated pages: blog/page.tsx, admin/page.tsx, admin/discipleship/page.tsx
+- NextIntlClientProvider was already set up in [locale]/layout.tsx from US-003
+- Files changed: 12 component/page files
+- **Learnings for future iterations:**
+  - `useTranslations()` returns a function directly (not `{ t }` like useLanguage)
+  - Can use `useTranslations()` without namespace for dot-notation keys like `t('welcome.title')`
+  - Or use `useTranslations('welcome')` then `t('title')` for namespace-scoped access
+  - LanguageToggle still uses useLanguage() for language/setLanguage - that's separate from translations
+---
+
+## 2026-01-19 - US-007
+Thread: https://ampcode.com/threads/T-019bd94e-975d-7719-9059-d905d5de3710
+- Created src/i18n/routing.ts with `defineRouting()` for centralized routing config
+- Created src/i18n/navigation.ts with `createNavigation(routing)` for locale-aware navigation utilities
+- Updated LanguageToggle to use `useRouter` and `usePathname` from navigation.ts
+- Toggle now uses `router.replace(pathname, { locale: nextLocale })` for URL-based locale switching
+- Updated src/i18n.ts to use routing config and `hasLocale()` helper
+- Updated src/middleware.ts to use routing config
+- Updated [locale]/layout.tsx to use routing config and `hasLocale()`
+- Files changed: src/components/LanguageToggle.tsx, src/i18n.ts, src/i18n/routing.ts, src/i18n/navigation.ts, src/middleware.ts, src/app/[locale]/layout.tsx
+- **Learnings for future iterations:**
+  - next-intl middleware automatically sets NEXT_LOCALE cookie for locale persistence
+  - `createNavigation(routing)` exports Link, redirect, usePathname, useRouter, getPathname
+  - For programmatic locale switching: `router.replace(pathname, { locale: nextLocale })`
+  - `useLocale()` from next-intl returns current locale in client components
+  - Use `useTransition()` for pending state during navigation
 ---
