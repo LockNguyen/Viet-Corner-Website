@@ -1,0 +1,21 @@
+## Codebase Patterns
+- next-intl v4 uses `requestLocale` (not `locale`) in getRequestConfig - must await it
+- Middleware matcher pattern: `'/(vi|en)/:path*'` for locale routes
+- Messages JSON files go in `/messages` directory at project root
+
+---
+
+## 2026-01-19 - US-001
+Thread: https://ampcode.com/threads/T-019bd940-895a-75d9-b57a-d3f53daaeeb6
+- Installed next-intl package (v4.7.0)
+- Created src/i18n.ts with getRequestConfig for locale handling
+- Created src/middleware.ts for locale detection and routing
+- Updated next.config.js with next-intl plugin wrapper
+- Created /messages/en.json and /messages/vi.json (placeholder content for US-002)
+- Added .eslintrc.json with next/core-web-vitals config
+- Files changed: package.json, package-lock.json, next.config.js, src/i18n.ts, src/middleware.ts, messages/en.json, messages/vi.json, .eslintrc.json
+- **Learnings for future iterations:**
+  - next-intl v4 API: use `requestLocale` instead of `locale` in getRequestConfig callback
+  - Must await requestLocale before using it
+  - Plugin pattern: `withNextIntl(nextConfig)` wraps the config
+---

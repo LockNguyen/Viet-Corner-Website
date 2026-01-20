@@ -57,7 +57,7 @@ export default function ContactForm() {
                   Get in Touch
                 </h3>
                 <p className="text-body text-gray-600 mb-8">
-                  We'd love to hear from you and help you get connected with our community.
+                  We&apos;d love to hear from you and help you get connected with our community.
                 </p>
               </div>
 
@@ -169,7 +169,7 @@ export default function ContactForm() {
 
                 {submitStatus === 'success' && (
                   <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                    <p className="text-green-800 font-medium">Thank you! We'll get back to you soon.</p>
+                    <p className="text-green-800 font-medium">Thank you! We&apos;ll get back to you soon.</p>
                   </div>
                 )}
 

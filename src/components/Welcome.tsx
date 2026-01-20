@@ -37,7 +37,7 @@ export default function Welcome() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-900">Bible Study</h3>
-              <p className="text-gray-600">Deepening our understanding of God's Word together</p>
+              <p className="text-gray-600">Deepening our understanding of God&apos;s Word together</p>
             </div>
             
             <div className="text-center space-y-4">
@@ -47,7 +47,7 @@ export default function Welcome() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-900">Love</h3>
-              <p className="text-gray-600">Sharing God's love through service and compassion</p>
+              <p className="text-gray-600">Sharing God&apos;s love through service and compassion</p>
             </div>
           </div>
         </div>

@@ -1,3 +1,172 @@
 {
-  "placeholder": "Translations will be added in US-002"
+  "church": {
+    "name": "Hoi Thanh Tin Lanh Viet Nam",
+    "subtitle": "Vietnamese Evangelical Church"
+  },
+  "navigation": {
+    "about": "About Us",
+    "stories": "Our Stories",
+    "events": "Events",
+    "contact": "Contact",
+    "joinUs": "Join Us"
+  },
+  "hero": {
+    "title": "Making God Known",
+    "subtitle": "Through Life Together",
+    "description": "Join us at the Vietnamese Evangelical Church as we inspire one another to love God and do good. We're a simple community learning and growing in faith together.",
+    "planVisit": "Plan Your Visit",
+    "ourStories": "Our Stories"
+  },
+  "welcome": {
+    "title": "We're glad you're here",
+    "description": "Jesus was a simple man with a simple plan to make God known. Together, we constantly look at Jesus through God's Word, inspired to become whatever destiny requires so that we can give hope to the many still unfamiliar with God's amazing love."
+  },
+  "ministries": {
+    "title": "We are a church dedicated to walking with God",
+    "subtitle": "We believe that what makes church special is not only the Sunday sermon, but also the spiritual connections we build with God and each other.",
+    "sundayServices": {
+      "title": "Sunday Services",
+      "description": "Join us for engaging and faith-building messages from the Bible, along with singing, fellowship, and classes for kids.",
+      "link": "View times →"
+    },
+    "smallGroups": {
+      "title": "Small Groups",
+      "description": "Connect with friends at a similar life point in your neighborhood. Get to know each other on a deeper level through discussions about God and life.",
+      "link": "Get connected →"
+    },
+    "bibleStudies": {
+      "title": "Bible Studies",
+      "description": "Studying the Bible for ourselves helps us learn about a God who loves us, cares for us, and has a plan for our lives.",
+      "link": "Learn more →"
+    },
+    "communityImpact": {
+      "title": "Community Impact",
+      "description": "We are striving to make a difference in the lives of all Vietnamese residents, regardless of religious affiliation.",
+      "link": "Get involved →"
+    }
+  },
+  "stories": {
+    "title": "Stories of God at Work",
+    "subtitle": "Inspiring stories and highlights about the impact God is making through our church community.",
+    "viewAll": "View all stories →"
+  },
+  "events": {
+    "title": "Upcoming Events",
+    "subtitle": "Join us for these upcoming events and activities in our community.",
+    "viewCalendar": "View Full Calendar"
+  },
+  "contact": {
+    "title": "Join us at the Vietnamese Evangelical Church",
+    "subtitle": "We're striving to love God and serve our community. Come be part of what God is building."
+  },
+  "footer": {
+    "description": "We are a simple community learning and growing in faith together. We believe in making God known through life-on-life discipleship and authentic relationships.",
+    "planVisit": "Plan Your Visit",
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact Info",
+    "copyright": "© 2024 Vietnamese Evangelical Church. All rights reserved."
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Admin Dashboard",
+      "subtitle": "Manage your church content and programs",
+      "events": {
+        "title": "Events Management",
+        "description": "Create, edit, and manage church events, services, and special programs."
+      },
+      "discipleship": {
+        "title": "Discipleship Courses",
+        "description": "Manage discipleship courses, locations, and class schedules."
+      }
+    },
+    "events": {
+      "title": "Events Management",
+      "subtitle": "Create, edit, and manage your events",
+      "add": "Add New Event",
+      "edit": "Edit Event",
+      "delete": "Delete Event",
+      "noEvents": "No events yet",
+      "createFirst": "Get started by creating your first event.",
+      "search": "Search events...",
+      "allEvents": "All Events",
+      "activeOnly": "Active Only",
+      "inactiveOnly": "Inactive Only",
+      "active": "Active",
+      "inactive": "Inactive",
+      "actions": "Actions",
+      "location": "Location",
+      "date": "Date",
+      "status": "Status"
+    },
+    "form": {
+      "title": "Title",
+      "subtitle": "Subtitle",
+      "location": "Location",
+      "startDate": "Start Date & Time",
+      "endDate": "End Date & Time",
+      "thumbnail": "Thumbnail Image",
+      "hero": "Hero Image",
+      "notes": "Notes",
+      "isActive": "Event is active and visible to users",
+      "recurring": "Recurring event (repeats weekly)",
+      "save": "Save Changes",
+      "create": "Create Event",
+      "cancel": "Cancel",
+      "saving": "Saving...",
+      "required": "Required",
+      "titleRequired": "Title is required",
+      "selectImage": "Select Image",
+      "changeImage": "Change Image",
+      "uploadNew": "Upload New Image",
+      "uploading": "Uploading...",
+      "currentImage": "Current Image:"
+    },
+    "discipleship": {
+      "title": "Discipleship Courses",
+      "subtitle": "Manage courses, locations, and class schedules",
+      "addCourse": "Add New Course",
+      "editCourse": "Edit Course",
+      "deleteCourse": "Delete Course",
+      "noCourses": "No courses yet",
+      "createFirstCourse": "Get started by creating your first discipleship course.",
+      "courseName": "Course Name",
+      "courseDescription": "Description",
+      "courseNamePlaceholder": "e.g., Basic Discipleship",
+      "descriptionPlaceholder": "Brief description of the course...",
+      "addLocation": "Add Location",
+      "editLocation": "Edit Location",
+      "deleteLocation": "Delete Location",
+      "noLocations": "No locations added yet. Click \"Add Location\" to start.",
+      "locationName": "Location Name",
+      "locationNamePlaceholder": "e.g., Wake Forest University",
+      "addClass": "Add Class",
+      "editClass": "Edit Class",
+      "deleteClass": "Delete Class",
+      "noClasses": "No classes scheduled yet. Click \"Add Class\" to add one.",
+      "classStartTime": "Start Time",
+      "classEndTime": "End Time",
+      "classContact": "Contact",
+      "classPassage": "Bible Passage",
+      "classPassagePlaceholder": "e.g., John 3:16-21",
+      "classContactPlaceholder": "Phone or email",
+      "classPreview": "Preview",
+      "classRecurringNote": "Note: Classes recur weekly",
+      "classRecurringDescription": "Only the day of the week and time matter. The specific date will be used to determine the weekday.",
+      "deleteWarningCourse": "This will delete all locations and classes under this course.",
+      "deleteWarningLocation": "This will delete all classes at this location.",
+      "deleteConfirm": "Are you sure?",
+      "deleteCannotUndo": "This action cannot be undone."
+    },
+    "common": {
+      "edit": "Edit",
+      "delete": "Delete",
+      "save": "Save",
+      "cancel": "Cancel",
+      "back": "Back",
+      "loading": "Loading...",
+      "error": "Error",
+      "success": "Success",
+      "manage": "Manage"
+    }
+  }
 }

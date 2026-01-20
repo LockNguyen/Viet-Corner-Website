@@ -1,3 +1,172 @@
 {
-  "placeholder": "Translations will be added in US-002"
+  "church": {
+    "name": "Hội Thánh Tin Lành Việt Nam",
+    "subtitle": "Vietnamese Evangelical Church"
+  },
+  "navigation": {
+    "about": "Về Chúng Tôi",
+    "stories": "Câu Chuyện",
+    "events": "Sự Kiện",
+    "contact": "Liên Hệ",
+    "joinUs": "Tham Gia"
+  },
+  "hero": {
+    "title": "Làm Cho Chúa Được Biết",
+    "subtitle": "Qua Cuộc Sống Cùng Nhau",
+    "description": "Hãy tham gia cùng chúng tôi tại Hội Thánh Tin Lành Việt Nam khi chúng tôi khuyến khích nhau yêu mến Chúa và làm điều thiện. Chúng tôi là một cộng đồng đơn giản học hỏi và lớn lên trong đức tin cùng nhau.",
+    "planVisit": "Lên Kế Hoạch Thăm Viếng",
+    "ourStories": "Câu Chuyện Của Chúng Tôi"
+  },
+  "welcome": {
+    "title": "Chúng tôi vui mừng khi bạn ở đây",
+    "description": "Chúa Giê-su là một người đơn giản với một kế hoạch đơn giản để làm cho Chúa được biết. Cùng nhau, chúng tôi liên tục nhìn vào Chúa Giê-su qua Lời Chúa, được truyền cảm hứng để trở thành bất cứ điều gì định mệnh yêu cầu."
+  },
+  "ministries": {
+    "title": "Chúng tôi là một hội thánh dành riêng để đi cùng với Chúa",
+    "subtitle": "Chúng tôi tin rằng điều làm cho hội thánh đặc biệt không chỉ là bài giảng Chủ nhật, mà còn là những kết nối thuộc linh chúng tôi xây dựng với Chúa và với nhau.",
+    "sundayServices": {
+      "title": "Thờ Phượng Chủ Nhật",
+      "description": "Hãy tham gia cùng chúng tôi cho những thông điệp hấp dẫn và xây dựng đức tin từ Kinh Thánh, cùng với ca hát, giao thông, và các lớp học cho trẻ em.",
+      "link": "Xem giờ →"
+    },
+    "smallGroups": {
+      "title": "Nhóm Nhỏ",
+      "description": "Kết nối với bạn bè ở cùng một điểm cuộc sống trong khu phố của bạn. Hiểu biết nhau ở mức độ sâu hơn thông qua các cuộc thảo luận về Chúa và cuộc sống.",
+      "link": "Kết nối →"
+    },
+    "bibleStudies": {
+      "title": "Nghiên Cứu Kinh Thánh",
+      "description": "Nghiên cứu Kinh Thánh cho chính mình giúp chúng ta học về một Chúa yêu thương chúng ta, chăm sóc chúng ta, và có kế hoạch cho cuộc sống của chúng ta.",
+      "link": "Tìm hiểu thêm →"
+    },
+    "communityImpact": {
+      "title": "Tác Động Cộng Đồng",
+      "description": "Chúng tôi đang nỗ lực tạo ra sự khác biệt trong cuộc sống của tất cả cư dân Việt Nam, bất kể tôn giáo.",
+      "link": "Tham gia →"
+    }
+  },
+  "stories": {
+    "title": "Câu Chuyện Về Công Việc Của Chúa",
+    "subtitle": "Những câu chuyện truyền cảm hứng và điểm nổi bật về tác động Chúa đang tạo ra qua cộng đồng hội thánh của chúng tôi.",
+    "viewAll": "Xem tất cả câu chuyện →"
+  },
+  "events": {
+    "title": "Sự Kiện Sắp Tới",
+    "subtitle": "Hãy tham gia cùng chúng tôi cho những sự kiện và hoạt động sắp tới trong cộng đồng của chúng tôi.",
+    "viewCalendar": "Xem Lịch Đầy Đủ"
+  },
+  "contact": {
+    "title": "Hãy tham gia cùng chúng tôi tại Hội Thánh Tin Lành Việt Nam",
+    "subtitle": "Chúng tôi đang nỗ lực yêu mến Chúa và phục vụ cộng đồng của chúng tôi. Hãy đến và là một phần của những gì Chúa đang xây dựng."
+  },
+  "footer": {
+    "description": "Chúng tôi là một cộng đồng đơn giản học hỏi và lớn lên trong đức tin cùng nhau. Chúng tôi tin vào việc làm cho Chúa được biết qua môn đồ hóa đời sống và những mối quan hệ chân thật.",
+    "planVisit": "Lên Kế Hoạch Thăm Viếng",
+    "quickLinks": "Liên Kết Nhanh",
+    "contactInfo": "Thông Tin Liên Hệ",
+    "copyright": "© 2024 Hội Thánh Tin Lành Việt Nam. Tất cả quyền được bảo lưu."
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Bảng Điều Khiển",
+      "subtitle": "Quản lý nội dung và chương trình nhà thờ",
+      "events": {
+        "title": "Quản Lý Sự Kiện",
+        "description": "Tạo, chỉnh sửa và quản lý sự kiện nhà thờ, dịch vụ và chương trình đặc biệt."
+      },
+      "discipleship": {
+        "title": "Khóa Đào Tạo Môn Đồ",
+        "description": "Quản lý khóa học đào tạo môn đồ, địa điểm và lịch học."
+      }
+    },
+    "events": {
+      "title": "Quản Lý Sự Kiện",
+      "subtitle": "Tạo, chỉnh sửa và quản lý sự kiện",
+      "add": "Thêm Sự Kiện Mới",
+      "edit": "Chỉnh Sửa Sự Kiện",
+      "delete": "Xóa Sự Kiện",
+      "noEvents": "Chưa có sự kiện nào",
+      "createFirst": "Bắt đầu bằng cách tạo sự kiện đầu tiên.",
+      "search": "Tìm kiếm sự kiện...",
+      "allEvents": "Tất Cả Sự Kiện",
+      "activeOnly": "Chỉ Hoạt Động",
+      "inactiveOnly": "Chỉ Không Hoạt Động",
+      "active": "Hoạt động",
+      "inactive": "Không hoạt động",
+      "actions": "Hành động",
+      "location": "Địa điểm",
+      "date": "Ngày",
+      "status": "Trạng thái"
+    },
+    "form": {
+      "title": "Tiêu Đề",
+      "subtitle": "Phụ Đề",
+      "location": "Địa Điểm",
+      "startDate": "Ngày & Giờ Bắt Đầu",
+      "endDate": "Ngày & Giờ Kết Thúc",
+      "thumbnail": "Ảnh Thumbnail",
+      "hero": "Ảnh Hero",
+      "notes": "Ghi Chú",
+      "isActive": "Sự kiện đang hoạt động và hiển thị",
+      "recurring": "Sự kiện lặp lại (hàng tuần)",
+      "save": "Lưu Thay Đổi",
+      "create": "Tạo Sự Kiện",
+      "cancel": "Hủy",
+      "saving": "Đang lưu...",
+      "required": "Bắt buộc",
+      "titleRequired": "Tiêu đề là bắt buộc",
+      "selectImage": "Chọn Ảnh",
+      "changeImage": "Đổi Ảnh",
+      "uploadNew": "Tải Ảnh Mới Lên",
+      "uploading": "Đang tải lên...",
+      "currentImage": "Ảnh hiện tại:"
+    },
+    "discipleship": {
+      "title": "Khóa Đào Tạo Môn Đồ",
+      "subtitle": "Quản lý khóa học, địa điểm và lịch học",
+      "addCourse": "Thêm Khóa Học Mới",
+      "editCourse": "Chỉnh Sửa Khóa Học",
+      "deleteCourse": "Xóa Khóa Học",
+      "noCourses": "Chưa có khóa học nào",
+      "createFirstCourse": "Bắt đầu bằng cách tạo khóa học đào tạo đầu tiên.",
+      "courseName": "Tên Khóa Học",
+      "courseDescription": "Mô Tả",
+      "courseNamePlaceholder": "ví dụ: Đào Tạo Cơ Bản",
+      "descriptionPlaceholder": "Mô tả ngắn về khóa học...",
+      "addLocation": "Thêm Địa Điểm",
+      "editLocation": "Chỉnh Sửa Địa Điểm",
+      "deleteLocation": "Xóa Địa Điểm",
+      "noLocations": "Chưa có địa điểm nào. Nhấp \"Thêm Địa Điểm\" để bắt đầu.",
+      "locationName": "Tên Địa Điểm",
+      "locationNamePlaceholder": "ví dụ: Đại Học Wake Forest",
+      "addClass": "Thêm Lớp",
+      "editClass": "Chỉnh Sửa Lớp",
+      "deleteClass": "Xóa Lớp",
+      "noClasses": "Chưa có lớp nào. Nhấp \"Thêm Lớp\" để thêm.",
+      "classStartTime": "Giờ Bắt Đầu",
+      "classEndTime": "Giờ Kết Thúc",
+      "classContact": "Liên Hệ",
+      "classPassage": "Đoạn Kinh Thánh",
+      "classPassagePlaceholder": "ví dụ: Giăng 3:16-21",
+      "classContactPlaceholder": "Điện thoại hoặc email",
+      "classPreview": "Xem Trước",
+      "classRecurringNote": "Lưu ý: Lớp học lặp lại hàng tuần",
+      "classRecurringDescription": "Chỉ ngày trong tuần và giờ học quan trọng. Ngày cụ thể sẽ được dùng để xác định thứ.",
+      "deleteWarningCourse": "Điều này sẽ xóa tất cả địa điểm và lớp học thuộc khóa này.",
+      "deleteWarningLocation": "Điều này sẽ xóa tất cả lớp học tại địa điểm này.",
+      "deleteConfirm": "Bạn có chắc chắn?",
+      "deleteCannotUndo": "Hành động này không thể hoàn tác."
+    },
+    "common": {
+      "edit": "Sửa",
+      "delete": "Xóa",
+      "save": "Lưu",
+      "cancel": "Hủy",
+      "back": "Quay lại",
+      "loading": "Đang tải...",
+      "error": "Lỗi",
+      "success": "Thành công",
+      "manage": "Quản lý"
+    }
+  }
 }
