@@ -158,3 +158,46 @@ Thread: https://ampcode.com/threads/T-019bd954-7fb3-7320-a9d2-7810ca063912
   - Components may use translation keys that differ from JSON structure (e.g., `contact.description` vs `contact.subtitle`)
   - Always run the production server to catch missing translation runtime errors - build may pass but runtime fails
 ---
+
+## 2026-01-20 - US-011
+Thread: https://ampcode.com/threads/T-019bdb8d-5ec2-7613-826d-c37625abc3be
+- Created /schemas directory at project root
+- Created schemas/README.md with comprehensive documentation:
+  - Schema file listing and purposes
+  - JSON Schema Draft 2020-12 conventions (required fields, nullable types, date formats)
+  - Generation workflow commands (generate:all, generate:types, generate:dart, generate:rules)
+  - Instructions for adding new schemas
+  - Example schema template
+- Files changed: schemas/README.md
+- **Learnings for future iterations:**
+  - Existing types in src/types/event.types.ts and discipleship.types.ts serve as reference for schema creation
+  - Use `["string", "null"]` pattern in JSON Schema for optional nullable fields
+---
+
+## 2026-01-20 - US-012
+Thread: https://ampcode.com/threads/T-019bdb8e-6daf-777d-97db-b42811f334da
+- Created schemas/event.schema.json following JSON Schema Draft 2020-12
+- Included all 13 Event fields from EventEntity interface in src/types/event.types.ts
+- Required fields: id, title, isActive, recurring, order
+- Optional nullable fields use `["string", "null"]` type
+- Added format annotations: uri for image URLs, date-time for startDateTime/endDateTime
+- Added additionalProperties: false to enforce strict schema validation
+- Files changed: schemas/event.schema.json
+- **Learnings for future iterations:**
+  - Use `format: "uri"` for URL fields and `format: "date-time"` for ISO 8601 timestamps
+  - `additionalProperties: false` prevents extra fields in validated data
+---
+
+## 2026-01-20 - US-013
+Thread: https://ampcode.com/threads/T-019bdb8f-cfcc-7576-a5a3-0af0225a4b7a
+- Created schemas/discipleship-course.schema.json with id, name, description fields
+- Created schemas/discipleship-location.schema.json with id, courseId, name, thumbnailImageUrl fields
+- Created schemas/discipleship-class.schema.json with id, courseId, locationId, startTime, endTime, contact, passage fields
+- All schemas follow JSON Schema Draft 2020-12 format
+- Required fields based on discipleship.types.ts: id always required, optional fields use `["string", "null"]` type
+- Class schema uses `format: "date-time"` for startTime/endTime, location schema uses `format: "uri"` for thumbnailImageUrl
+- Files changed: schemas/discipleship-course.schema.json, schemas/discipleship-location.schema.json, schemas/discipleship-class.schema.json
+- **Learnings for future iterations:**
+  - TypeScript `Date` type maps to `format: "date-time"` string in JSON Schema
+  - Keep schema structure flat (no nested objects) for simpler code generation
+---
