@@ -137,8 +137,8 @@
                 "npm run lint passes"
             ],
             "priority": 9,
-            "passes": false,
-            "notes": ""
+            "passes": true,
+            "notes": "Deleted LanguageContext.tsx and removed LanguageProvider from locale layout. All components already migrated to next-intl in US-006."
         },
         {
             "id": "US-010",
@@ -153,8 +153,8 @@
                 "No console errors in dev tools"
             ],
             "priority": 10,
-            "passes": false,
-            "notes": ""
+            "passes": true,
+            "notes": "Fixed missing contact.description translation key in both en.json and vi.json. Verified all pages render correctly with correct lang attributes and translations."
         },
         {
             "id": "US-011",

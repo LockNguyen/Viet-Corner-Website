@@ -14,6 +14,7 @@
 - next-intl middleware automatically sets NEXT_LOCALE cookie for language persistence
 - SEO: Use `generateMetadata` in locale layout with `getTranslations({ locale, namespace: 'metadata' })` for localized metadata
 - hreflang alternates: Use `metadata.alternates.languages` object (not manual link tags) for Next.js to generate hreflang links
+- Always verify translation keys match between components and JSON files - missing keys cause runtime MISSING_MESSAGE errors
 
 ---
 
@@ -128,4 +129,32 @@ Thread: https://ampcode.com/threads/T-019bd951-3f03-7251-8367-5b337e0f4cfd
   - Use `metadata.alternates.languages` for hreflang links, not manual link tags
   - Root layout can return just `{children}` when locale layout handles html/body
   - OpenGraph uses `vi_VN`/`en_US` format (underscore), not `vi-VN` (hyphen)
+---
+
+## 2026-01-19 - US-009
+Thread: https://ampcode.com/threads/T-019bd953-3905-76de-9e2c-d4dc7c5470c3
+- Deleted src/contexts/LanguageContext.tsx (378 lines of unused code)
+- Removed LanguageProvider wrapper from src/app/[locale]/layout.tsx
+- All components already migrated to next-intl in US-006, so no component changes needed
+- Files changed: src/app/[locale]/layout.tsx, deleted src/contexts/LanguageContext.tsx
+- **Learnings for future iterations:**
+  - Previous iterations (US-006, US-007) already migrated all useLanguage() calls to next-intl
+  - Clean-up stories may be simpler than expected if prior work was thorough
+---
+
+## 2026-01-19 - US-010
+Thread: https://ampcode.com/threads/T-019bd954-7fb3-7320-a9d2-7810ca063912
+- Found and fixed missing `contact.description` translation key in both en.json and vi.json
+- Verified all pages render correctly:
+  - /en homepage: correct lang="en", English title, English welcome text
+  - /vi homepage: correct lang="vi", Vietnamese title, Vietnamese welcome text
+  - /en/privacy: correct lang="en", shows "Privacy Policy"
+  - /vi/privacy: correct lang="vi", shows "Chính Sách Bảo Mật"
+  - /en/admin: shows "Admin Dashboard"
+  - /vi/admin: shows "Bảng Điều Khiển"
+- No console errors after fix
+- Files changed: messages/en.json, messages/vi.json
+- **Learnings for future iterations:**
+  - Components may use translation keys that differ from JSON structure (e.g., `contact.description` vs `contact.subtitle`)
+  - Always run the production server to catch missing translation runtime errors - build may pass but runtime fails
 ---
