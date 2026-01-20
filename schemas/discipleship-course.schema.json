@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "discipleship-course.schema.json",
+  "title": "DiscipleshipCourse",
+  "description": "A discipleship course offered by the church",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the course"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the course"
+    },
+    "description": {
+      "type": ["string", "null"],
+      "description": "Optional description of the course"
+    }
+  },
+  "required": ["id", "name"],
+  "additionalProperties": false
+}
