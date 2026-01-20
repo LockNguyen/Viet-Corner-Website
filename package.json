@@ -10,7 +10,8 @@
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "generate:types": "npx ts-node --esm scripts/generate-types.ts",
-    "generate:dart": "npx ts-node --esm scripts/generate-dart.ts"
+    "generate:dart": "npx ts-node --esm scripts/generate-dart.ts",
+    "generate:rules": "npx ts-node --esm scripts/generate-rules.ts"
   },
   "dependencies": {
     "firebase": "^12.7.0",

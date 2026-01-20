@@ -1,0 +1,144 @@
+// This file was automatically generated from JSON schemas
+// DO NOT MODIFY IT BY HAND. Run 'npm run generate:rules' to regenerate.
+//
+// These are helper validation functions to be used in your firestore.rules file.
+// Copy the functions you need into your main firestore.rules file.
+//
+// Usage example in firestore.rules:
+//   match /events/{eventId} {
+//     allow write: if isValidEvent(request.resource.data) && eventHasOnlyFields(request.resource.data);
+//   }
+
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // ============================================
+    // VALIDATION HELPER FUNCTIONS
+    // ============================================
+
+  // Validates DiscipleshipClass document structure
+  // Generated from discipleshipclass.schema.json
+  function isValidDiscipleshipClass(data) {
+    return 'id' in data &&
+           'courseId' in data &&
+           'locationId' in data &&
+           'startTime' in data &&
+           'endTime' in data &&
+           data.id is string &&
+           data.courseId is string &&
+           data.locationId is string &&
+           data.startTime is string &&
+           data.endTime is string &&
+           (!('contact' in data) || data.contact == null || data.contact is string) &&
+           (!('passage' in data) || data.passage == null || data.passage is string);
+  }
+
+  // Validates DiscipleshipCourse document structure
+  // Generated from discipleshipcourse.schema.json
+  function isValidDiscipleshipCourse(data) {
+    return 'id' in data &&
+           'name' in data &&
+           data.id is string &&
+           data.name is string &&
+           (!('description' in data) || data.description == null || data.description is string);
+  }
+
+  // Validates DiscipleshipLocation document structure
+  // Generated from discipleshiplocation.schema.json
+  function isValidDiscipleshipLocation(data) {
+    return 'id' in data &&
+           'courseId' in data &&
+           'name' in data &&
+           data.id is string &&
+           data.courseId is string &&
+           data.name is string &&
+           (!('thumbnailImageUrl' in data) || data.thumbnailImageUrl == null || data.thumbnailImageUrl is string);
+  }
+
+  // Validates Event document structure
+  // Generated from event.schema.json
+  function isValidEvent(data) {
+    return 'id' in data &&
+           'title' in data &&
+           'isActive' in data &&
+           'recurring' in data &&
+           'order' in data &&
+           data.id is string &&
+           data.title is string &&
+           (!('subtitle' in data) || data.subtitle == null || data.subtitle is string) &&
+           (!('dateDisplay' in data) || data.dateDisplay == null || data.dateDisplay is string) &&
+           (!('heroImageUrl' in data) || data.heroImageUrl == null || data.heroImageUrl is string) &&
+           (!('thumbnailImageUrl' in data) || data.thumbnailImageUrl == null || data.thumbnailImageUrl is string) &&
+           (!('location' in data) || data.location == null || data.location is string) &&
+           (!('notes' in data) || data.notes == null || data.notes is string) &&
+           (!('startDateTime' in data) || data.startDateTime == null || data.startDateTime is string) &&
+           (!('endDateTime' in data) || data.endDateTime == null || data.endDateTime is string) &&
+           data.isActive is bool &&
+           data.recurring is bool &&
+           data.order is number;
+  }
+
+    // ============================================
+    // FIELD RESTRICTION FUNCTIONS
+    // ============================================
+
+  // Checks that DiscipleshipClass only contains allowed fields
+  function discipleshipClassHasOnlyFields(data) {
+    return data.keys().hasOnly(['id', 'courseId', 'locationId', 'startTime', 'endTime', 'contact', 'passage']);
+  }
+
+  // Checks that DiscipleshipCourse only contains allowed fields
+  function discipleshipCourseHasOnlyFields(data) {
+    return data.keys().hasOnly(['id', 'name', 'description']);
+  }
+
+  // Checks that DiscipleshipLocation only contains allowed fields
+  function discipleshipLocationHasOnlyFields(data) {
+    return data.keys().hasOnly(['id', 'courseId', 'name', 'thumbnailImageUrl']);
+  }
+
+  // Checks that Event only contains allowed fields
+  function eventHasOnlyFields(data) {
+    return data.keys().hasOnly(['id', 'title', 'subtitle', 'dateDisplay', 'heroImageUrl', 'thumbnailImageUrl', 'location', 'notes', 'startDateTime', 'endDateTime', 'isActive', 'recurring', 'order']);
+  }
+
+    // ============================================
+    // EXAMPLE RULES (customize as needed)
+    // ============================================
+
+    // Events collection
+    match /events/{eventId} {
+      allow read: if true;
+      allow create: if request.auth != null && 
+                       isValidEvent(request.resource.data) && 
+                       eventHasOnlyFields(request.resource.data);
+      allow update: if request.auth != null && 
+                       isValidEvent(request.resource.data) && 
+                       eventHasOnlyFields(request.resource.data);
+      allow delete: if request.auth != null;
+    }
+
+    // Discipleship collections
+    match /discipleshipCourses/{courseId} {
+      allow read: if true;
+      allow write: if request.auth != null && 
+                      isValidDiscipleshipCourse(request.resource.data) && 
+                      discipleshipCourseHasOnlyFields(request.resource.data);
+    }
+
+    match /discipleshipLocations/{locationId} {
+      allow read: if true;
+      allow write: if request.auth != null && 
+                      isValidDiscipleshipLocation(request.resource.data) && 
+                      discipleshipLocationHasOnlyFields(request.resource.data);
+    }
+
+    match /discipleshipClasses/{classId} {
+      allow read: if true;
+      allow write: if request.auth != null && 
+                      isValidDiscipleshipClass(request.resource.data) && 
+                      discipleshipClassHasOnlyFields(request.resource.data);
+    }
+  }
+}

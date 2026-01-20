@@ -200,4 +200,39 @@ Thread: https://ampcode.com/threads/T-019bdb8f-cfcc-7576-a5a3-0af0225a4b7a
 - **Learnings for future iterations:**
   - TypeScript `Date` type maps to `format: "date-time"` string in JSON Schema
   - Keep schema structure flat (no nested objects) for simpler code generation
+  - For ESM scripts: use `fileURLToPath(import.meta.url)` to get __dirname equivalent
+  - json-schema-to-typescript generates `string | null` for nullable fields correctly
+---
+
+## 2026-01-20 - US-014
+Thread: https://ampcode.com/threads/T-019bdb90-c5c7-76a9-8cc2-f7243eca6d5b
+- Installed json-schema-to-typescript and ts-node as dev dependencies
+- Created scripts/generate-types.ts that reads all *.schema.json files
+- Script outputs TypeScript interfaces to src/types/generated/
+- Generated 4 type files (event.ts, discipleship-*.ts) plus index.ts barrel export
+- Added npm script: generate:types
+- Files changed: package.json, package-lock.json, scripts/generate-types.ts, src/types/generated/*.ts
+- **Learnings for future iterations:**
+  - ts-node with --esm flag requires `fileURLToPath(import.meta.url)` pattern for __dirname
+  - json-schema-to-typescript automatically handles nullable union types correctly
+  - Generated types use `string | null` for optional nullable fields (matches existing types)
+- Dart filenames use underscores (e.g., `discipleship_class.dart`), not hyphens - Dart convention
+- Custom Dart generator is simpler than quicktype dependency; generates fromJson/toJson/copyWith/toString/==
+---
+
+## 2026-01-20 - US-015
+Thread: https://ampcode.com/threads/T-019bdb92-91a8-75f5-9e4b-97a4b269ca0d
+- Created scripts/generate-dart.ts custom generator (no external dependencies)
+- Generator reads all *.schema.json files and outputs Dart classes
+- Output path: /Users/nl/projects/church_app/lib/data/models/generated/
+- Generated classes include: fromJson(), toJson(), copyWith(), toString(), ==, hashCode
+- Null-safe based on required/optional fields: required non-nullable use `required`, optional use `?`
+- DateTime fields properly handle ISO 8601 parsing/serialization
+- Added npm script: generate:dart
+- Dart filenames use underscores for Dart convention compliance
+- Files changed: package.json, scripts/generate-dart.ts
+- **Learnings for future iterations:**
+  - Dart filenames must use underscores not hyphens (file_names lint rule)
+  - Custom generator avoids quicktype dependency overhead
+  - copyWith params should always be nullable (`String? id`) to allow passing null for "no change"
 ---

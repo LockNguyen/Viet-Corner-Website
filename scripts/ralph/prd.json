@@ -216,8 +216,8 @@
                 "Generated types match existing event.types.ts structure"
             ],
             "priority": 14,
-            "passes": false,
-            "notes": ""
+            "passes": true,
+            "notes": "Installed json-schema-to-typescript and ts-node. Script uses ESM imports with fileURLToPath. Generates 4 type files + index.ts barrel export."
         },
         {
             "id": "US-015",
@@ -233,7 +233,7 @@
                 "Add npm script: generate:dart"
             ],
             "priority": 15,
-            "passes": false,
+            "passes": true,
             "notes": "Output path: /Users/nl/projects/church_app/lib/data/models/generated/"
         },
         {
