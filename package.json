@@ -13,7 +13,8 @@
     "generate:dart": "npx ts-node --esm scripts/generate-dart.ts",
     "generate:rules": "npx ts-node --esm scripts/generate-rules.ts",
     "generate:all": "npm run generate:types && npm run generate:dart && npm run generate:rules",
-    "prebuild": "npm run generate:all"
+    "validate:schemas": "npx ts-node --esm scripts/validate-schemas.ts",
+    "prebuild": "npm run validate:schemas && npm run generate:all"
   },
   "dependencies": {
     "firebase": "^12.7.0",

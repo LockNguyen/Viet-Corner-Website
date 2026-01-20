@@ -282,3 +282,34 @@ Thread: https://ampcode.com/threads/T-019bdba8-6826-70af-9a09-5a4fbb58a8e9
   - Use `Omit<Generated, 'dateField'> & { dateField: Date }` pattern to extend generated types with Date fields
   - Keep manual type files as extensions; index.ts acts as facade for consumers
 ---
+
+## 2026-01-20 - US-019
+Thread: https://ampcode.com/threads/T-019bdbab-2ee0-74ff-b570-d384de016e2d
+- Created docs/schema-driven-development.md with comprehensive documentation
+- Documented: workflow overview with ASCII diagram, generated file locations for web/mobile/firestore
+- Documented: how to add new fields to existing schemas (with example)
+- Documented: how to create new schemas (step-by-step with template)
+- Documented: regeneration commands and when to run them
+- Documented: schema conventions (field types, required vs optional, naming)
+- Documented: runtime vs generated types and Date conversion patterns
+- Documented: troubleshooting section for common issues
+- Files changed: docs/schema-driven-development.md (new)
+- **Learnings for future iterations:**
+  - Documentation files don't need any code changes - just create markdown
+  - Good to include ASCII diagram for workflow visualization
+---
+
+## 2026-01-20 - US-020
+Thread: https://ampcode.com/threads/T-019bdbac-9712-7732-9ff7-bcba965dc321
+- Created scripts/validate-schemas.ts to validate JSON schemas
+- Validates: JSON parsing, $schema declaration, title (required for codegen), type=object, properties exist, required fields
+- Invalid schemas cause exit code 1 with clear error messages
+- Added npm script: validate:schemas
+- Updated prebuild to run validate:schemas before generate:all
+- Verified: npm run build runs validation → generation → build successfully
+- Verified: npm run type-check passes (generated TypeScript compiles)
+- Files changed: scripts/validate-schemas.ts (new), package.json
+- **Learnings for future iterations:**
+  - Schema validation should check for codegen-specific requirements (title, properties, type=object)
+  - prebuild hook order: validate first, then generate, then build
+---

@@ -293,8 +293,8 @@
                 "Document the generated file locations for web and mobile"
             ],
             "priority": 19,
-            "passes": false,
-            "notes": ""
+            "passes": true,
+            "notes": "Created comprehensive docs/schema-driven-development.md with workflow diagram, all acceptance criteria documented."
         },
         {
             "id": "US-020",
@@ -307,8 +307,8 @@
                 "Verify generated Dart compiles without errors (if Flutter SDK available)"
             ],
             "priority": 20,
-            "passes": false,
-            "notes": ""
+            "passes": true,
+            "notes": "Created validate-schemas.ts script. prebuild hook runs validation before generation. Invalid schemas exit with code 1 and clear error messages."
         }
     ]
 }
