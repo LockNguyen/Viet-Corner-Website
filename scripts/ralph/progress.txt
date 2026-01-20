@@ -1,4 +1,5 @@
 ## Codebase Patterns
+- Types: Use src/types/index.ts for imports; generated types use string dates, runtime types (EventEntity, DiscipleshipClass) use Date objects
 - next-intl v4 uses `requestLocale` (not `locale`) in getRequestConfig - must await it
 - Middleware matcher pattern: `'/(vi|en)/:path*'` for locale routes
 - Messages JSON files go in `/messages` directory at project root
@@ -254,4 +255,30 @@ Thread: https://ampcode.com/threads/T-019bdb95-3ed0-73de-896b-c7bd9efdd148
   - Use `'fieldName' in data` to check field existence
   - For optional/nullable fields: `(!('field' in data) || data.field == null || data.field is type)`
   - `data.keys().hasOnly([...])` prevents extra fields
+---
+
+## 2026-01-20 - US-017
+Thread: https://ampcode.com/threads/T-019bdba1-d883-7439-879c-264b9837a872
+- Added npm script `generate:all` that runs all three generators sequentially
+- Added npm script `prebuild` that auto-runs generate:all before `npm run build`
+- Tested: generate:all completes in ~2.2 seconds (well under 10 second requirement)
+- Verified: prebuild hook runs automatically when `npm run build` is executed
+- Files changed: package.json
+- **Learnings for future iterations:**
+  - npm lifecycle scripts: `prebuild` automatically runs before `build` command
+  - Use `&&` chaining for sequential npm script execution in generate:all
+---
+
+## 2026-01-20 - US-018
+Thread: https://ampcode.com/threads/T-019bdba8-6826-70af-9a09-5a4fbb58a8e9
+- Created src/types/index.ts as central type export consolidating generated and manual types
+- Updated event.types.ts to extend EventEntity from generated Event type (overrides Date fields)
+- Updated discipleship.types.ts to extend DiscipleshipClass from generated type (overrides Date fields)
+- Re-exported DiscipleshipCourse and DiscipleshipLocation directly from generated (no changes needed)
+- Manual types kept for form data (EventFormData, DiscipleshipFormData, etc.) since not in schemas
+- Files changed: src/types/index.ts (new), src/types/event.types.ts, src/types/discipleship.types.ts
+- **Learnings for future iterations:**
+  - Generated types use `string` for date-time fields (JSON Schema format), runtime needs `Date` objects
+  - Use `Omit<Generated, 'dateField'> & { dateField: Date }` pattern to extend generated types with Date fields
+  - Keep manual type files as extensions; index.ts acts as facade for consumers
 ---

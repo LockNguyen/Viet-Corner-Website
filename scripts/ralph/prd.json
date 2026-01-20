@@ -263,8 +263,8 @@
                 "All three generators run successfully"
             ],
             "priority": 17,
-            "passes": false,
-            "notes": ""
+            "passes": true,
+            "notes": "generate:all runs in ~2.2 seconds. prebuild hook auto-runs generate:all before next build."
         },
         {
             "id": "US-018",
@@ -278,8 +278,8 @@
                 "npm run lint passes"
             ],
             "priority": 18,
-            "passes": false,
-            "notes": ""
+            "passes": true,
+            "notes": "Created src/types/index.ts as central export. Manual types kept as extensions (EventEntity, DiscipleshipClass with Date fields). Generated types used for JSON/API boundaries."
         },
         {
             "id": "US-019",
