@@ -2,6 +2,8 @@
 - next-intl v4 uses `requestLocale` (not `locale`) in getRequestConfig - must await it
 - Middleware matcher pattern: `'/(vi|en)/:path*'` for locale routes
 - Messages JSON files go in `/messages` directory at project root
+- Translation keys use nested structure (e.g., `admin.events.title`) - access via `t('admin.events.title')` or `t('title')` with namespace
+- Escape quotes in JSX: `&apos;` for apostrophes, `&quot;` for double quotes
 
 ---
 
@@ -18,4 +20,16 @@ Thread: https://ampcode.com/threads/T-019bd940-895a-75d9-b57a-d3f53daaeeb6
   - next-intl v4 API: use `requestLocale` instead of `locale` in getRequestConfig callback
   - Must await requestLocale before using it
   - Plugin pattern: `withNextIntl(nextConfig)` wraps the config
+---
+
+## 2026-01-19 - US-002
+Thread: https://ampcode.com/threads/T-019bd942-6d24-7202-8a2e-4874631979cc
+- Extracted all 100+ translations from LanguageContext.tsx into JSON files
+- Created complete /messages/en.json with nested structure (church, navigation, hero, welcome, ministries, stories, events, contact, footer, admin)
+- Created complete /messages/vi.json with matching structure
+- Fixed pre-existing ESLint errors (unescaped quotes/apostrophes in JSX)
+- Files changed: messages/en.json, messages/vi.json, ContactForm.tsx, Welcome.tsx, ClassesList.tsx, LocationsList.tsx
+- **Learnings for future iterations:**
+  - Translation keys use nested structure (e.g., `admin.events.title`) not flat dot notation
+  - Must escape quotes in JSX: use `&apos;` for apostrophes, `&quot;` for double quotes
 ---

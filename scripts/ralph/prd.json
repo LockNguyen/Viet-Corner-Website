@@ -30,7 +30,7 @@
                 "JSON files are valid and parseable"
             ],
             "priority": 2,
-            "passes": false,
+            "passes": true,
             "notes": "Reference src/contexts/LanguageContext.tsx for existing translations"
         },
         {
