@@ -66,6 +66,30 @@
     "contactInfo": "Thông Tin Liên Hệ",
     "copyright": "© 2024 Hội Thánh Tin Lành Việt Nam. Tất cả quyền được bảo lưu."
   },
+  "privacy": {
+    "title": "Chính Sách Bảo Mật",
+    "lastUpdated": "Cập nhật lần cuối: Tháng 1 năm 2024",
+    "intro": "Quyền riêng tư của bạn rất quan trọng với chúng tôi. Chính sách bảo mật này giải thích cách chúng tôi thu thập, sử dụng và bảo vệ thông tin của bạn.",
+    "sections": {
+      "collection": {
+        "title": "Thông Tin Chúng Tôi Thu Thập",
+        "content": "Chúng tôi thu thập thông tin bạn cung cấp trực tiếp cho chúng tôi, chẳng hạn như khi bạn liên hệ qua trang web, đăng ký sự kiện, hoặc tham gia các chương trình của chúng tôi."
+      },
+      "use": {
+        "title": "Cách Chúng Tôi Sử Dụng Thông Tin",
+        "content": "Chúng tôi sử dụng thông tin thu thập được để giao tiếp với bạn về các sự kiện nhà thờ, trả lời thắc mắc của bạn, và cải thiện dịch vụ của chúng tôi cho cộng đồng."
+      },
+      "protection": {
+        "title": "Cách Chúng Tôi Bảo Vệ Thông Tin",
+        "content": "Chúng tôi áp dụng các biện pháp bảo mật thích hợp để bảo vệ thông tin cá nhân của bạn khỏi truy cập, thay đổi hoặc tiết lộ trái phép."
+      },
+      "contact": {
+        "title": "Liên Hệ Chúng Tôi",
+        "content": "Nếu bạn có bất kỳ câu hỏi nào về chính sách bảo mật này, vui lòng liên hệ với chúng tôi qua trang web hoặc trong các buổi thờ phượng Chủ nhật."
+      }
+    },
+    "backToHome": "Quay Về Trang Chủ"
+  },
   "admin": {
     "dashboard": {
       "title": "Bảng Điều Khiển",

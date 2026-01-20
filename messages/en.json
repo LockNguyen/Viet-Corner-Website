@@ -66,6 +66,30 @@
     "contactInfo": "Contact Info",
     "copyright": "© 2024 Vietnamese Evangelical Church. All rights reserved."
   },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: January 2024",
+    "intro": "Your privacy is important to us. This privacy policy explains how we collect, use, and protect your information.",
+    "sections": {
+      "collection": {
+        "title": "Information We Collect",
+        "content": "We collect information you provide directly to us, such as when you contact us through our website, sign up for events, or participate in our programs."
+      },
+      "use": {
+        "title": "How We Use Your Information",
+        "content": "We use the information we collect to communicate with you about church events, respond to your inquiries, and improve our services to the community."
+      },
+      "protection": {
+        "title": "How We Protect Your Information",
+        "content": "We implement appropriate security measures to protect your personal information from unauthorized access, alteration, or disclosure."
+      },
+      "contact": {
+        "title": "Contact Us",
+        "content": "If you have any questions about this privacy policy, please contact us through our website or during Sunday services."
+      }
+    },
+    "backToHome": "Back to Home"
+  },
   "admin": {
     "dashboard": {
       "title": "Admin Dashboard",
