@@ -47,8 +47,8 @@
                 "npm run build completes without errors"
             ],
             "priority": 3,
-            "passes": false,
-            "notes": ""
+            "passes": true,
+            "notes": "No privacy page existed - skipped. Also moved blog and unauthorized pages."
         },
         {
             "id": "US-004",

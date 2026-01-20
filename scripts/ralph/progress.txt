@@ -4,6 +4,8 @@
 - Messages JSON files go in `/messages` directory at project root
 - Translation keys use nested structure (e.g., `admin.events.title`) - access via `t('admin.events.title')` or `t('title')` with namespace
 - Escape quotes in JSX: `&apos;` for apostrophes, `&quot;` for double quotes
+- Locale layout uses `await params` pattern (Next.js 15 style): `const { locale } = await params;`
+- Root layout remains minimal (html/body only), providers go in locale layout
 
 ---
 
@@ -32,4 +34,17 @@ Thread: https://ampcode.com/threads/T-019bd942-6d24-7202-8a2e-4874631979cc
 - **Learnings for future iterations:**
   - Translation keys use nested structure (e.g., `admin.events.title`) not flat dot notation
   - Must escape quotes in JSX: use `&apos;` for apostrophes, `&quot;` for double quotes
+---
+
+## 2026-01-19 - US-003
+Thread: https://ampcode.com/threads/T-019bd945-6b16-74d2-a25c-8ed71cdba27b
+- Created src/app/[locale]/ directory structure
+- Moved page.tsx, login/, admin/, blog/, unauthorized/ to [locale]
+- Created src/app/[locale]/layout.tsx with NextIntlClientProvider and locale handling
+- Updated root layout.tsx to be minimal (no providers - they moved to locale layout)
+- Files changed: src/app/layout.tsx, src/app/[locale]/layout.tsx, plus all moved pages
+- **Learnings for future iterations:**
+  - No privacy page existed (PRD acceptance criteria mentioned it but it wasn't there)
+  - Locale layout params use Promise pattern: `params: Promise<{ locale: string }>` and must `await params`
+  - NextIntlClientProvider wraps client components for translations to work
 ---
