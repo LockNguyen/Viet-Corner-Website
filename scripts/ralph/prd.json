@@ -121,8 +121,8 @@
                 "npm run build completes without errors"
             ],
             "priority": 8,
-            "passes": false,
-            "notes": ""
+            "passes": true,
+            "notes": "Moved html/body to locale layout with lang={locale}. Added generateMetadata with localized title/description, hreflang alternates, and OpenGraph locale."
         },
         {
             "id": "US-009",

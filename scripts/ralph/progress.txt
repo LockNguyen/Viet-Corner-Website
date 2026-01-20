@@ -12,6 +12,8 @@
 - Use `defineRouting()` in src/i18n/routing.ts and `createNavigation(routing)` in src/i18n/navigation.ts for locale-aware navigation
 - For locale switching: use `useRouter` from '@/i18n/navigation' with `router.replace(pathname, { locale: nextLocale })`
 - next-intl middleware automatically sets NEXT_LOCALE cookie for language persistence
+- SEO: Use `generateMetadata` in locale layout with `getTranslations({ locale, namespace: 'metadata' })` for localized metadata
+- hreflang alternates: Use `metadata.alternates.languages` object (not manual link tags) for Next.js to generate hreflang links
 
 ---
 
@@ -109,4 +111,21 @@ Thread: https://ampcode.com/threads/T-019bd94e-975d-7719-9059-d905d5de3710
   - For programmatic locale switching: `router.replace(pathname, { locale: nextLocale })`
   - `useLocale()` from next-intl returns current locale in client components
   - Use `useTransition()` for pending state during navigation
+---
+
+## 2026-01-19 - US-008
+Thread: https://ampcode.com/threads/T-019bd951-3f03-7251-8367-5b337e0f4cfd
+- Moved html/body tags from root layout to [locale]/layout.tsx
+- Added `lang={locale}` attribute to html element
+- Created generateMetadata function with locale-aware title, description, keywords
+- Added hreflang alternate links via metadata.alternates.languages (en, vi, x-default)
+- Added OpenGraph locale (vi_VN/en_US) and alternateLocale
+- Added metadata translations to messages/en.json and messages/vi.json
+- Simplified root layout.tsx to just return children
+- Files changed: src/app/layout.tsx, src/app/[locale]/layout.tsx, messages/en.json, messages/vi.json
+- **Learnings for future iterations:**
+  - `generateMetadata` in locale layout can use `getTranslations({ locale, namespace })` for localized metadata
+  - Use `metadata.alternates.languages` for hreflang links, not manual link tags
+  - Root layout can return just `{children}` when locale layout handles html/body
+  - OpenGraph uses `vi_VN`/`en_US` format (underscore), not `vi-VN` (hyphen)
 ---

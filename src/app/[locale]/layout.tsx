@@ -5,7 +5,6 @@ import { Inter } from 'next/font/google';
 import type { Metadata } from 'next';
 import { routing } from '@/i18n/routing';
 import { AuthProvider } from '@/contexts/AuthContext';
-import { LanguageProvider } from '@/contexts/LanguageContext';
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -111,9 +110,7 @@ export default async function LocaleLayout({
       <body className={inter.className}>
         <NextIntlClientProvider messages={messages}>
           <AuthProvider>
-            <LanguageProvider>
-              {children}
-            </LanguageProvider>
+            {children}
           </AuthProvider>
         </NextIntlClientProvider>
       </body>
