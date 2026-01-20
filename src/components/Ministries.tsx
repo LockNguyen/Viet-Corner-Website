@@ -1,9 +1,9 @@
 'use client';
 
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslations } from 'next-intl';
 
 export default function Ministries() {
-  const { t } = useLanguage();
+  const t = useTranslations();
 
   const ministries = [
     {

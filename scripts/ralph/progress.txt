@@ -7,6 +7,7 @@
 - Locale layout uses `await params` pattern (Next.js 15 style): `const { locale } = await params;`
 - Root layout remains minimal (html/body only), providers go in locale layout
 - SSG: `generateStaticParams` in layout propagates to all child pages - no need to add it to each page
+- Server Components use `getTranslations('namespace')` from 'next-intl/server', Client Components use `useTranslations('namespace')`
 
 ---
 
@@ -60,4 +61,16 @@ Thread: https://ampcode.com/threads/T-019bd947-c7ee-7077-9d7d-13ba52a04669
   - `export const dynamic = 'force-static'` only works in Server Components, not 'use client' files
   - SSG happens automatically when generateStaticParams is defined in layout
   - Client components can still be SSG - they're pre-rendered and hydrated
+---
+
+## 2026-01-19 - US-005
+Thread: https://ampcode.com/threads/T-019bd949-ea17-72d6-9177-4883bf9f9e36
+- Converted src/app/[locale]/page.tsx to Server Component (removed 'use client' and useLanguage)
+- Created src/app/[locale]/privacy/page.tsx as a pure Server Component using `getTranslations`
+- Added privacy translations to messages/en.json and messages/vi.json
+- Files changed: src/app/[locale]/page.tsx, src/app/[locale]/privacy/page.tsx, messages/en.json, messages/vi.json
+- **Learnings for future iterations:**
+  - Server Components can render Client Components as children - they don't need translations themselves
+  - `getTranslations('namespace')` returns a function that works like `t('key')` for server-side
+  - Privacy page shows 204 B size in build output - pure Server Component with minimal JS
 ---

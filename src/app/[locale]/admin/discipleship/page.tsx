@@ -6,11 +6,11 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import CoursesList from '@/components/admin/discipleship/CoursesList';
 import CourseForm from '@/components/admin/discipleship/CourseForm';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslations } from 'next-intl';
 import { useDiscipleshipCourses } from '@/hooks/useDiscipleshipCourses';
 
 export default function DiscipleshipCoursesPage() {
-  const { t } = useLanguage();
+  const t = useTranslations();
   const { courses, loading, error } = useDiscipleshipCourses();
   const [showAddForm, setShowAddForm] = useState(false);
 

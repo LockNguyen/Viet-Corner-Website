@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslations } from 'next-intl';
 
 export default function ContactForm() {
-  const { t } = useLanguage();
+  const t = useTranslations();
   const [formData, setFormData] = useState({
     name: '',
     email: '',

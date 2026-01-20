@@ -1,9 +1,9 @@
 'use client';
 
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslations } from 'next-intl';
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const t = useTranslations();
 
   return (
     <footer className="bg-gray-900 text-white">

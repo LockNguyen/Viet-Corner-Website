@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslations } from 'next-intl';
 import { useAuth } from '@/contexts/AuthContext';
 import LanguageToggle from './LanguageToggle';
 
 export default function Header() {
-  const { t } = useLanguage();
+  const t = useTranslations();
   const { user, signOut } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 

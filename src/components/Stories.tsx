@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslations } from 'next-intl';
 
 export default function Stories() {
-  const { t } = useLanguage();
+  const t = useTranslations();
 
   const storyPosts = [
     {

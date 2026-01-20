@@ -1,9 +1,9 @@
 'use client';
 
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslations } from 'next-intl';
 
 export default function Welcome() {
-  const { t } = useLanguage();
+  const t = useTranslations();
 
   return (
     <section className="section bg-white">

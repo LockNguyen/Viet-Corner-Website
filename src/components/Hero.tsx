@@ -2,10 +2,10 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslations } from 'next-intl';
 
 export default function Hero() {
-  const { t } = useLanguage();
+  const t = useTranslations();
 
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
