@@ -26,7 +26,21 @@
   },
   "welcome": {
     "title": "We're glad you're here",
-    "description": "Jesus was a simple man with a simple plan to make God known. Together, we constantly look at Jesus through God's Word, inspired to become whatever destiny requires so that we can give hope to the many still unfamiliar with God's amazing love."
+    "description": "Jesus was a simple man with a simple plan to make God known. Together, we constantly look at Jesus through God's Word, inspired to become whatever destiny requires so that we can give hope to the many still unfamiliar with God's amazing love.",
+    "features": {
+      "community": {
+        "title": "Community",
+        "description": "Building meaningful relationships and spiritual connections"
+      },
+      "bibleStudy": {
+        "title": "Bible Study",
+        "description": "Deepening our understanding of God's Word together"
+      },
+      "love": {
+        "title": "Love",
+        "description": "Sharing God's love through service and compassion"
+      }
+    }
   },
   "ministries": {
     "title": "We are a church dedicated to walking with God",
@@ -55,7 +69,30 @@
   "stories": {
     "title": "Stories of God at Work",
     "subtitle": "Inspiring stories and highlights about the impact God is making through our church community.",
-    "viewAll": "View all stories →"
+    "viewAll": "View all stories →",
+    "readMore": "Read more",
+    "cards": {
+      "youthBand": {
+        "title": "Youth Worship Band",
+        "description": "Young musicians coming together to lead worship and grow in faith.",
+        "alt": "Full youth band practicing for worship"
+      },
+      "crossCultural": {
+        "title": "Cross-Cultural Worship",
+        "description": "Bridging cultures through music and shared faith experiences.",
+        "alt": "Meredith and Nguyen Anh duet Thank you Jesus for the Blood"
+      },
+      "youthFellowship": {
+        "title": "Youth Fellowship",
+        "description": "Building friendships and community through fun activities and fellowship.",
+        "alt": "Youth gathers at house for fellowship and karaoke"
+      },
+      "tetCelebration": {
+        "title": "Tet Celebration",
+        "description": "Honoring Vietnamese culture and traditions while celebrating our faith.",
+        "alt": "Tet Holiday Event 2025 - Ladies in Traditional Dress"
+      }
+    }
   },
   "events": {
     "title": "Upcoming Events",
@@ -65,14 +102,51 @@
   "contact": {
     "title": "Join us at the Vietnamese Evangelical Church",
     "subtitle": "We're striving to love God and serve our community. Come be part of what God is building.",
-    "description": "We're striving to love God and serve our community. Come be part of what God is building."
+    "description": "We're striving to love God and serve our community. Come be part of what God is building.",
+    "getInTouch": "Get in Touch",
+    "getInTouchDescription": "We'd love to hear from you and help you get connected with our community.",
+    "location": "Location",
+    "locationAddress": "123 Church Street\nCity, State 12345",
+    "serviceTimes": "Service Times",
+    "serviceTimesValue": "Sunday: 10:30 AM\nWednesday: 7:00 PM",
+    "contactLabel": "Contact",
+    "contactValue": "Phone: (555) 123-4567\nEmail: info@vietnamesechurch.com",
+    "form": {
+      "name": "Name",
+      "namePlaceholder": "Your full name",
+      "email": "Email",
+      "emailPlaceholder": "your.email@example.com",
+      "phone": "Phone",
+      "phonePlaceholder": "(555) 123-4567",
+      "message": "Message",
+      "messagePlaceholder": "Tell us how we can help you...",
+      "submit": "Send Message",
+      "submitting": "Sending...",
+      "successMessage": "Thank you! We'll get back to you soon.",
+      "errorMessage": "Something went wrong. Please try again.",
+      "required": "*"
+    }
   },
   "footer": {
-    "description": "We are a simple community learning and growing in faith together. We believe in making God known through life-on-life discipleship and authentic relationships.",
+    "description": "Making God known through life together in our Vietnamese community.",
     "planVisit": "Plan Your Visit",
     "quickLinks": "Quick Links",
-    "contactInfo": "Contact Info",
-    "copyright": "© 2024 Vietnamese Evangelical Church. All rights reserved."
+    "aboutUs": "About Us",
+    "ourStories": "Our Stories",
+    "events": "Events",
+    "contact": "Contact",
+    "ministries": "Ministries",
+    "sundayServices": "Sunday Services",
+    "smallGroups": "Small Groups",
+    "bibleStudies": "Bible Studies",
+    "communityImpact": "Community Impact",
+    "contactInfo": "Contact",
+    "sundayServiceTime": "Sunday Services: 10:30 AM",
+    "email": "Email: info@vietnamesechurch.com",
+    "phone": "Phone: (555) 123-4567",
+    "copyright": "All rights reserved.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service"
   },
   "privacy": {
     "title": "Privacy Policy",

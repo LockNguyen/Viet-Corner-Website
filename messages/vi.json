@@ -26,7 +26,21 @@
   },
   "welcome": {
     "title": "Chúng tôi vui mừng khi bạn ở đây",
-    "description": "Chúa Giê-su là một người đơn giản với một kế hoạch đơn giản để làm cho Chúa được biết. Cùng nhau, chúng tôi liên tục nhìn vào Chúa Giê-su qua Lời Chúa, được truyền cảm hứng để trở thành bất cứ điều gì định mệnh yêu cầu."
+    "description": "Chúa Giê-su là một người đơn giản với một kế hoạch đơn giản để làm cho Chúa được biết. Cùng nhau, chúng tôi liên tục nhìn vào Chúa Giê-su qua Lời Chúa, được truyền cảm hứng để trở thành bất cứ điều gì định mệnh yêu cầu.",
+    "features": {
+      "community": {
+        "title": "Cộng Đồng",
+        "description": "Xây dựng những mối quan hệ ý nghĩa và kết nối thuộc linh"
+      },
+      "bibleStudy": {
+        "title": "Nghiên Cứu Kinh Thánh",
+        "description": "Đào sâu sự hiểu biết về Lời Chúa cùng nhau"
+      },
+      "love": {
+        "title": "Tình Yêu",
+        "description": "Chia sẻ tình yêu của Chúa qua sự phục vụ và lòng thương xót"
+      }
+    }
   },
   "ministries": {
     "title": "Chúng tôi là một hội thánh dành riêng để đi cùng với Chúa",
@@ -55,7 +69,30 @@
   "stories": {
     "title": "Câu Chuyện Về Công Việc Của Chúa",
     "subtitle": "Những câu chuyện truyền cảm hứng và điểm nổi bật về tác động Chúa đang tạo ra qua cộng đồng hội thánh của chúng tôi.",
-    "viewAll": "Xem tất cả câu chuyện →"
+    "viewAll": "Xem tất cả câu chuyện →",
+    "readMore": "Đọc thêm",
+    "cards": {
+      "youthBand": {
+        "title": "Ban Nhạc Thờ Phượng Thanh Niên",
+        "description": "Các nhạc sĩ trẻ cùng nhau dẫn dắt thờ phượng và lớn lên trong đức tin.",
+        "alt": "Toàn thể ban nhạc thanh niên tập luyện thờ phượng"
+      },
+      "crossCultural": {
+        "title": "Thờ Phượng Đa Văn Hóa",
+        "description": "Kết nối các nền văn hóa qua âm nhạc và những trải nghiệm đức tin chung.",
+        "alt": "Meredith và Nguyễn Anh song ca Cảm Ơn Chúa Giê-su Vì Huyết Ngài"
+      },
+      "youthFellowship": {
+        "title": "Giao Thông Thanh Niên",
+        "description": "Xây dựng tình bạn và cộng đồng qua các hoạt động vui vẻ và giao thông.",
+        "alt": "Thanh niên tụ họp tại nhà để giao thông và karaoke"
+      },
+      "tetCelebration": {
+        "title": "Mừng Xuân Tết",
+        "description": "Tôn vinh văn hóa và truyền thống Việt Nam đồng thời kỷ niệm đức tin của chúng tôi.",
+        "alt": "Sự kiện Tết 2025 - Các chị em trong trang phục truyền thống"
+      }
+    }
   },
   "events": {
     "title": "Sự Kiện Sắp Tới",
@@ -65,14 +102,51 @@
   "contact": {
     "title": "Hãy tham gia cùng chúng tôi tại Hội Thánh Tin Lành Việt Nam",
     "subtitle": "Chúng tôi đang nỗ lực yêu mến Chúa và phục vụ cộng đồng của chúng tôi. Hãy đến và là một phần của những gì Chúa đang xây dựng.",
-    "description": "Chúng tôi đang nỗ lực yêu mến Chúa và phục vụ cộng đồng của chúng tôi. Hãy đến và là một phần của những gì Chúa đang xây dựng."
+    "description": "Chúng tôi đang nỗ lực yêu mến Chúa và phục vụ cộng đồng của chúng tôi. Hãy đến và là một phần của những gì Chúa đang xây dựng.",
+    "getInTouch": "Liên Hệ Với Chúng Tôi",
+    "getInTouchDescription": "Chúng tôi rất vui được nghe từ bạn và giúp bạn kết nối với cộng đồng của chúng tôi.",
+    "location": "Địa Điểm",
+    "locationAddress": "123 Church Street\nCity, State 12345",
+    "serviceTimes": "Giờ Thờ Phượng",
+    "serviceTimesValue": "Chủ Nhật: 10:30 AM\nThứ Tư: 7:00 PM",
+    "contactLabel": "Liên Hệ",
+    "contactValue": "Điện thoại: (555) 123-4567\nEmail: info@vietnamesechurch.com",
+    "form": {
+      "name": "Họ Tên",
+      "namePlaceholder": "Họ và tên đầy đủ của bạn",
+      "email": "Email",
+      "emailPlaceholder": "email.cuaban@example.com",
+      "phone": "Điện Thoại",
+      "phonePlaceholder": "(555) 123-4567",
+      "message": "Tin Nhắn",
+      "messagePlaceholder": "Cho chúng tôi biết chúng tôi có thể giúp gì cho bạn...",
+      "submit": "Gửi Tin Nhắn",
+      "submitting": "Đang gửi...",
+      "successMessage": "Cảm ơn bạn! Chúng tôi sẽ liên lạc lại sớm.",
+      "errorMessage": "Có lỗi xảy ra. Vui lòng thử lại.",
+      "required": "*"
+    }
   },
   "footer": {
-    "description": "Chúng tôi là một cộng đồng đơn giản học hỏi và lớn lên trong đức tin cùng nhau. Chúng tôi tin vào việc làm cho Chúa được biết qua môn đồ hóa đời sống và những mối quan hệ chân thật.",
+    "description": "Làm cho Chúa được biết qua cuộc sống cùng nhau trong cộng đồng Việt Nam.",
     "planVisit": "Lên Kế Hoạch Thăm Viếng",
     "quickLinks": "Liên Kết Nhanh",
-    "contactInfo": "Thông Tin Liên Hệ",
-    "copyright": "© 2024 Hội Thánh Tin Lành Việt Nam. Tất cả quyền được bảo lưu."
+    "aboutUs": "Về Chúng Tôi",
+    "ourStories": "Câu Chuyện",
+    "events": "Sự Kiện",
+    "contact": "Liên Hệ",
+    "ministries": "Mục Vụ",
+    "sundayServices": "Thờ Phượng Chủ Nhật",
+    "smallGroups": "Nhóm Nhỏ",
+    "bibleStudies": "Nghiên Cứu Kinh Thánh",
+    "communityImpact": "Tác Động Cộng Đồng",
+    "contactInfo": "Liên Hệ",
+    "sundayServiceTime": "Thờ Phượng Chủ Nhật: 10:30 AM",
+    "email": "Email: info@vietnamesechurch.com",
+    "phone": "Điện thoại: (555) 123-4567",
+    "copyright": "Tất cả quyền được bảo lưu.",
+    "privacyPolicy": "Chính Sách Bảo Mật",
+    "termsOfService": "Điều Khoản Dịch Vụ"
   },
   "privacy": {
     "title": "Chính Sách Bảo Mật",

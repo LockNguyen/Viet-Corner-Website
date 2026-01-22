@@ -24,13 +24,13 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitStatus('success');
       setFormData({ name: '', email: '', phone: '', message: '' });
-      
+
       // Reset status after 3 seconds
       setTimeout(() => setSubmitStatus('idle'), 3000);
     }, 1000);
@@ -54,10 +54,10 @@ export default function ContactForm() {
             <div className="space-y-8">
               <div>
                 <h3 className="heading-3 text-gray-900 mb-6">
-                  Get in Touch
+                  {t('contact.getInTouch')}
                 </h3>
                 <p className="text-body text-gray-600 mb-8">
-                  We&apos;d love to hear from you and help you get connected with our community.
+                  {t('contact.getInTouchDescription')}
                 </p>
               </div>
 
@@ -70,8 +70,8 @@ export default function ContactForm() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Location</h4>
-                    <p className="text-gray-600">123 Church Street<br />City, State 12345</p>
+                    <h4 className="font-semibold text-gray-900">{t('contact.location')}</h4>
+                    <p className="text-gray-600 whitespace-pre-line">{t('contact.locationAddress')}</p>
                   </div>
                 </div>
 
@@ -82,8 +82,8 @@ export default function ContactForm() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Service Times</h4>
-                    <p className="text-gray-600">Sunday: 10:30 AM<br />Wednesday: 7:00 PM</p>
+                    <h4 className="font-semibold text-gray-900">{t('contact.serviceTimes')}</h4>
+                    <p className="text-gray-600 whitespace-pre-line">{t('contact.serviceTimesValue')}</p>
                   </div>
                 </div>
 
@@ -94,8 +94,8 @@ export default function ContactForm() {
                     </svg>
                   </div>
                   <div>
-                    <h4 className="font-semibold text-gray-900">Contact</h4>
-                    <p className="text-gray-600">Phone: (555) 123-4567<br />Email: info@vietnamesechurch.com</p>
+                    <h4 className="font-semibold text-gray-900">{t('contact.contactLabel')}</h4>
+                    <p className="text-gray-600 whitespace-pre-line">{t('contact.contactValue')}</p>
                   </div>
                 </div>
               </div>
@@ -106,7 +106,7 @@ export default function ContactForm() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Name *
+                    {t('contact.form.name')} {t('contact.form.required')}
                   </label>
                   <input
                     type="text"
@@ -116,13 +116,13 @@ export default function ContactForm() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                    placeholder="Your full name"
+                    placeholder={t('contact.form.namePlaceholder')}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email *
+                    {t('contact.form.email')} {t('contact.form.required')}
                   </label>
                   <input
                     type="email"
@@ -132,13 +132,13 @@ export default function ContactForm() {
                     onChange={handleChange}
                     required
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                    placeholder="your.email@example.com"
+                    placeholder={t('contact.form.emailPlaceholder')}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone
+                    {t('contact.form.phone')}
                   </label>
                   <input
                     type="tel"
@@ -147,13 +147,13 @@ export default function ContactForm() {
                     value={formData.phone}
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-                    placeholder="(555) 123-4567"
+                    placeholder={t('contact.form.phonePlaceholder')}
                   />
                 </div>
 
                 <div>
                   <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
+                    {t('contact.form.message')} {t('contact.form.required')}
                   </label>
                   <textarea
                     id="message"
@@ -163,19 +163,19 @@ export default function ContactForm() {
                     required
                     rows={4}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none"
-                    placeholder="Tell us how we can help you..."
+                    placeholder={t('contact.form.messagePlaceholder')}
                   />
                 </div>
 
                 {submitStatus === 'success' && (
                   <div className="p-4 bg-green-50 border border-green-200 rounded-lg">
-                    <p className="text-green-800 font-medium">Thank you! We&apos;ll get back to you soon.</p>
+                    <p className="text-green-800 font-medium">{t('contact.form.successMessage')}</p>
                   </div>
                 )}
 
                 {submitStatus === 'error' && (
                   <div className="p-4 bg-red-50 border border-red-200 rounded-lg">
-                    <p className="text-red-800 font-medium">Something went wrong. Please try again.</p>
+                    <p className="text-red-800 font-medium">{t('contact.form.errorMessage')}</p>
                   </div>
                 )}
 
@@ -184,7 +184,7 @@ export default function ContactForm() {
                   disabled={isSubmitting}
                   className="btn-primary w-full py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? t('contact.form.submitting') : t('contact.form.submit')}
                 </button>
               </form>
             </div>
@@ -193,4 +193,4 @@ export default function ContactForm() {
       </div>
     </section>
   );
-} 
+}

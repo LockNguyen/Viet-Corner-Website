@@ -13,7 +13,7 @@ export default function LanguageToggle() {
   const toggleLocale = () => {
     const nextLocale = locale === 'en' ? 'vi' : 'en';
     startTransition(() => {
-      router.replace(pathname, { locale: nextLocale });
+      router.replace(pathname, { locale: nextLocale, scroll: false });
     });
   };
 
