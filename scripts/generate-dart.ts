@@ -6,7 +6,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const SCHEMAS_DIR = path.join(__dirname, '..', 'schemas');
-const OUTPUT_DIR = '/Users/nl/projects/church_app/lib/data/models/generated';
+// Use environment variable if set, otherwise use a repo-relative path
+const OUTPUT_DIR = process.env.DART_OUT_DIR ?? path.join(process.cwd(), 'lib', 'data', 'models', 'generated');
 
 interface JsonSchema {
   title: string;
