@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "discipleship-class.schema.json",
+  "title": "DiscipleshipClass",
+  "description": "A specific class session within a discipleship course at a location",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the class"
+    },
+    "courseId": {
+      "type": "string",
+      "description": "Reference to the parent course"
+    },
+    "locationId": {
+      "type": "string",
+      "description": "Reference to the location where the class is held"
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Start time of the class in ISO 8601 format"
+    },
+    "endTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "End time of the class in ISO 8601 format"
+    },
+    "contact": {
+      "type": ["string", "null"],
+      "description": "Optional contact information for the class"
+    },
+    "passage": {
+      "type": ["string", "null"],
+      "description": "Optional scripture passage for the class"
+    }
+  },
+  "required": ["id", "courseId", "locationId", "startTime", "endTime"],
+  "additionalProperties": false
+}

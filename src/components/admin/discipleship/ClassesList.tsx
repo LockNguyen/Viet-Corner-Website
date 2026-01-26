@@ -63,7 +63,7 @@ export default function ClassesList({ courseId, locationId }: ClassesListProps) 
 
       {classes.length === 0 ? (
         <div className="text-center py-6 bg-gray-50 rounded-lg ml-12">
-          <p className="text-gray-500 text-sm">No classes scheduled yet. Click "Add Class" to add one.</p>
+          <p className="text-gray-500 text-sm">No classes scheduled yet. Click &quot;Add Class&quot; to add one.</p>
         </div>
       ) : (
         <div className="space-y-2">

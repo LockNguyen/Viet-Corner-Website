@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://vietcorner.org/schemas/event.schema.json",
+  "title": "Event",
+  "description": "An event entity representing a church event",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the event"
+    },
+    "title": {
+      "type": "string",
+      "description": "Event title"
+    },
+    "subtitle": {
+      "type": ["string", "null"],
+      "description": "Optional subtitle for the event"
+    },
+    "dateDisplay": {
+      "type": ["string", "null"],
+      "description": "Auto-generated display string for the event date (read-only)"
+    },
+    "heroImageUrl": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL for the hero/banner image"
+    },
+    "thumbnailImageUrl": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "URL for the thumbnail image"
+    },
+    "location": {
+      "type": ["string", "null"],
+      "description": "Event location"
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "description": "Additional notes about the event"
+    },
+    "startDateTime": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Event start date and time in ISO 8601 format"
+    },
+    "endDateTime": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Event end date and time in ISO 8601 format"
+    },
+    "isActive": {
+      "type": "boolean",
+      "description": "Whether the event is currently active"
+    },
+    "recurring": {
+      "type": "boolean",
+      "description": "Whether the event is recurring"
+    },
+    "order": {
+      "type": "number",
+      "description": "Display order for the event"
+    }
+  },
+  "required": ["id", "title", "isActive", "recurring", "order"],
+  "additionalProperties": false
+}

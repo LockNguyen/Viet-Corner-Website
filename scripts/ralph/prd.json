@@ -1,0 +1,314 @@
+{
+    "project": "VietCornerWebsite",
+    "branchName": "ralph/i18n-and-schema-gen",
+    "description": "Website Enhancements - Next.js Internationalization and Schema-Driven Development",
+    "userStories": [
+        {
+            "id": "US-001",
+            "title": "Install and Configure next-intl",
+            "description": "As a developer, I need to install and configure the next-intl library so the app can support SSG with multiple locales.",
+            "acceptanceCriteria": [
+                "Install next-intl package",
+                "Create src/i18n.ts configuration file",
+                "Create src/middleware.ts for locale detection and routing",
+                "Update next.config.js if needed for i18n",
+                "npm run build completes without errors"
+            ],
+            "priority": 1,
+            "passes": true,
+            "notes": ""
+        },
+        {
+            "id": "US-002",
+            "title": "Create Translation JSON Files",
+            "description": "As a developer, I need to extract all translations from LanguageContext.tsx into separate JSON files.",
+            "acceptanceCriteria": [
+                "Create /messages/en.json with all English translations",
+                "Create /messages/vi.json with all Vietnamese translations",
+                "All ~100+ translation keys from LanguageContext.tsx are migrated",
+                "Keys use dot notation (e.g., navigation.about, admin.events.title)",
+                "JSON files are valid and parseable"
+            ],
+            "priority": 2,
+            "passes": true,
+            "notes": "Reference src/contexts/LanguageContext.tsx for existing translations"
+        },
+        {
+            "id": "US-003",
+            "title": "Create Locale-Based Directory Structure",
+            "description": "As a developer, I need to restructure the app directory to support locale-based routing.",
+            "acceptanceCriteria": [
+                "Create src/app/[locale]/ directory structure",
+                "Move src/app/page.tsx to src/app/[locale]/page.tsx",
+                "Move src/app/privacy/ to src/app/[locale]/privacy/",
+                "Move src/app/login/ to src/app/[locale]/login/",
+                "Move src/app/admin/ to src/app/[locale]/admin/",
+                "Create src/app/[locale]/layout.tsx with proper locale handling",
+                "npm run build completes without errors"
+            ],
+            "priority": 3,
+            "passes": true,
+            "notes": "No privacy page existed - skipped. Also moved blog and unauthorized pages."
+        },
+        {
+            "id": "US-004",
+            "title": "Implement generateStaticParams for SSG",
+            "description": "As a developer, I need all pages to be statically generated at build time for both locales.",
+            "acceptanceCriteria": [
+                "Add export const dynamic = 'force-static' to public pages",
+                "Add generateStaticParams() returning [{ locale: 'en' }, { locale: 'vi' }]",
+                "npm run build shows ○ (Static) for all non-dynamic routes",
+                "View page source shows fully rendered HTML (proves SSG)"
+            ],
+            "priority": 4,
+            "passes": true,
+            "notes": "Already implemented in US-003 via generateStaticParams in [locale]/layout.tsx. All routes show ● (SSG) in build output."
+        },
+        {
+            "id": "US-005",
+            "title": "Update Server Components to Use getTranslations",
+            "description": "As a developer, I need Server Components to use next-intl's server-side translation function.",
+            "acceptanceCriteria": [
+                "Import getTranslations from next-intl/server",
+                "Update src/app/[locale]/page.tsx to use const t = await getTranslations()",
+                "Update src/app/[locale]/privacy/page.tsx to use server translations",
+                "All Server Components render translated content correctly",
+                "npm run build completes without errors"
+            ],
+            "priority": 5,
+            "passes": true,
+            "notes": "Converted page.tsx to Server Component. Created privacy page as pure Server Component using getTranslations."
+        },
+        {
+            "id": "US-006",
+            "title": "Update Client Components to Use useTranslations",
+            "description": "As a developer, I need Client Components to use next-intl's client-side translation hook.",
+            "acceptanceCriteria": [
+                "Wrap client components with NextIntlClientProvider in layout",
+                "Update admin components to use useTranslations() hook",
+                "Update navigation/header components to use useTranslations()",
+                "All Client Components render translated content correctly",
+                "npm run dev shows no console errors"
+            ],
+            "priority": 6,
+            "passes": true,
+            "notes": "Migrated Welcome, Header, Footer, Hero, Ministries, Stories, ContactForm, blog, and admin pages to useTranslations()"
+        },
+        {
+            "id": "US-007",
+            "title": "Implement Language Toggle with URL Routing",
+            "description": "As a user, I want to switch languages using a toggle that changes the URL.",
+            "acceptanceCriteria": [
+                "Language toggle switches between /en/* and /vi/* routes",
+                "Current page is preserved when switching (e.g., /en/privacy → /vi/privacy)",
+                "Selected language persists via cookie (not just localStorage)",
+                "Root / redirects to preferred locale based on browser language",
+                "Verify in browser: toggle works on homepage",
+                "Verify in browser: toggle works on admin pages"
+            ],
+            "priority": 7,
+            "passes": true,
+            "notes": "Created routing.ts and navigation.ts. LanguageToggle now uses next-intl useRouter with locale-aware URL switching. Middleware sets NEXT_LOCALE cookie automatically."
+        },
+        {
+            "id": "US-008",
+            "title": "Add SEO Metadata for Locales",
+            "description": "As a site owner, I want proper SEO metadata so search engines index both language versions.",
+            "acceptanceCriteria": [
+                "<html lang='en'> or <html lang='vi'> set correctly per page",
+                "Add hreflang alternate links in <head>",
+                "OpenGraph metadata includes correct locale",
+                "npm run build completes without errors"
+            ],
+            "priority": 8,
+            "passes": true,
+            "notes": "Moved html/body to locale layout with lang={locale}. Added generateMetadata with localized title/description, hreflang alternates, and OpenGraph locale."
+        },
+        {
+            "id": "US-009",
+            "title": "Remove LanguageContext and Clean Up",
+            "description": "As a developer, I need to remove the old language context to avoid duplication.",
+            "acceptanceCriteria": [
+                "Delete src/contexts/LanguageContext.tsx",
+                "Remove useLanguage() hook usage from all components",
+                "Remove LanguageProvider from layout.tsx",
+                "All components use next-intl instead",
+                "npm run build completes without errors",
+                "npm run lint passes"
+            ],
+            "priority": 9,
+            "passes": true,
+            "notes": "Deleted LanguageContext.tsx and removed LanguageProvider from locale layout. All components already migrated to next-intl in US-006."
+        },
+        {
+            "id": "US-010",
+            "title": "Verify All Pages in Both Languages",
+            "description": "As a QA tester, I need to verify all pages render correctly in both languages.",
+            "acceptanceCriteria": [
+                "Verify in browser: /en homepage renders in English",
+                "Verify in browser: /vi homepage renders in Vietnamese",
+                "Verify in browser: /en/privacy renders in English",
+                "Verify in browser: /vi/privacy renders in Vietnamese",
+                "Verify in browser: admin pages work in both languages",
+                "No console errors in dev tools"
+            ],
+            "priority": 10,
+            "passes": true,
+            "notes": "Fixed missing contact.description translation key in both en.json and vi.json. Verified all pages render correctly with correct lang attributes and translations."
+        },
+        {
+            "id": "US-011",
+            "title": "Create Schemas Directory Structure",
+            "description": "As a developer, I need a dedicated directory for JSON schema definitions.",
+            "acceptanceCriteria": [
+                "Create /schemas directory at project root",
+                "Create schemas/README.md explaining schema structure and usage",
+                "Document the generation workflow"
+            ],
+            "priority": 11,
+            "passes": true,
+            "notes": "Created /schemas directory with comprehensive README.md documenting schema structure, conventions, and generation workflow."
+        },
+        {
+            "id": "US-012",
+            "title": "Define Event JSON Schema",
+            "description": "As a developer, I need a JSON Schema definition for the Event model.",
+            "acceptanceCriteria": [
+                "Create schemas/event.schema.json",
+                "Schema follows JSON Schema Draft 2020-12 specification",
+                "Schema includes all Event fields: id, title, subtitle, dateDisplay, heroImageUrl, thumbnailImageUrl, location, notes, startDateTime, endDateTime, isActive, recurring, order",
+                "Schema defines required fields: id, title, isActive, recurring, order",
+                "Schema defines optional fields with null allowed",
+                "Schema validates field types (string, boolean, number, date-time)"
+            ],
+            "priority": 12,
+            "passes": true,
+            "notes": "Reference src/types/event.types.ts for existing field definitions"
+        },
+        {
+            "id": "US-013",
+            "title": "Define Discipleship JSON Schemas",
+            "description": "As a developer, I need JSON Schema definitions for the Discipleship data models.",
+            "acceptanceCriteria": [
+                "Create schemas/discipleship-course.schema.json",
+                "Create schemas/discipleship-location.schema.json",
+                "Create schemas/discipleship-class.schema.json",
+                "Course schema includes: id, name, description",
+                "Location schema includes: id, courseId, name, thumbnailImageUrl",
+                "Class schema includes: id, courseId, locationId, startTime, endTime, contact, passage",
+                "All schemas follow JSON Schema Draft 2020-12"
+            ],
+            "priority": 13,
+            "passes": true,
+            "notes": "Created three schemas matching discipleship.types.ts with JSON Schema Draft 2020-12 format"
+        },
+        {
+            "id": "US-014",
+            "title": "Create TypeScript Generator Script",
+            "description": "As a developer, I need a script to generate TypeScript interfaces from JSON schemas.",
+            "acceptanceCriteria": [
+                "Install json-schema-to-typescript as dev dependency",
+                "Create scripts/generate-types.ts",
+                "Script reads all *.schema.json files from /schemas",
+                "Script outputs TypeScript interfaces to src/types/generated/",
+                "Add npm script: generate:types",
+                "Running npm run generate:types creates valid TypeScript files",
+                "Generated types match existing event.types.ts structure"
+            ],
+            "priority": 14,
+            "passes": true,
+            "notes": "Installed json-schema-to-typescript and ts-node. Script uses ESM imports with fileURLToPath. Generates 4 type files + index.ts barrel export."
+        },
+        {
+            "id": "US-015",
+            "title": "Create Dart Generator Script",
+            "description": "As a developer, I need a script to generate Dart classes from JSON schemas for the Flutter app.",
+            "acceptanceCriteria": [
+                "Choose generator: quicktype or custom",
+                "Create scripts/generate-dart.ts",
+                "Script outputs Dart classes to configurable path",
+                "Generated classes include fromJson() factory constructor",
+                "Generated classes include toJson() method",
+                "Generated classes are null-safe based on required/optional fields",
+                "Add npm script: generate:dart"
+            ],
+            "priority": 15,
+            "passes": true,
+            "notes": "Output path: /Users/nl/projects/church_app/lib/data/models/generated/"
+        },
+        {
+            "id": "US-016",
+            "title": "Create Firestore Rules Generator Script",
+            "description": "As a developer, I need a script to generate Firestore validation functions from schemas.",
+            "acceptanceCriteria": [
+                "Create scripts/generate-rules.ts",
+                "Script outputs validation helper functions",
+                "Generated functions validate field types (string, boolean, number)",
+                "Generated functions validate required vs optional fields",
+                "Output format integrates with existing firestore.rules",
+                "Add npm script: generate:rules"
+            ],
+            "priority": 16,
+            "passes": true,
+            "notes": "Output path: /firestore/validation.rules with README.md. Generates isValid*() and *HasOnlyFields() functions for each schema."
+        },
+        {
+            "id": "US-017",
+            "title": "Create Combined Generation Command",
+            "description": "As a developer, I need a single command to regenerate all code from schemas.",
+            "acceptanceCriteria": [
+                "Add npm script: generate:all (runs all three generators)",
+                "Add npm script: prebuild (auto-generate before build)",
+                "Running npm run generate:all completes in < 10 seconds",
+                "All three generators run successfully"
+            ],
+            "priority": 17,
+            "passes": true,
+            "notes": "generate:all runs in ~2.2 seconds. prebuild hook auto-runs generate:all before next build."
+        },
+        {
+            "id": "US-018",
+            "title": "Migrate Existing Types to Generated Types",
+            "description": "As a developer, I need to replace manual type definitions with generated ones.",
+            "acceptanceCriteria": [
+                "Update imports in src/types/index.ts to export from generated/",
+                "Verify existing components still work with generated types",
+                "Delete or keep manual types as extensions",
+                "npm run build completes without errors",
+                "npm run lint passes"
+            ],
+            "priority": 18,
+            "passes": true,
+            "notes": "Created src/types/index.ts as central export. Manual types kept as extensions (EventEntity, DiscipleshipClass with Date fields). Generated types used for JSON/API boundaries."
+        },
+        {
+            "id": "US-019",
+            "title": "Add Schema Documentation",
+            "description": "As a developer, I need documentation on how to use and extend the schemas.",
+            "acceptanceCriteria": [
+                "Create docs/schema-driven-development.md",
+                "Document how to add a new field to an existing schema",
+                "Document how to create a new schema",
+                "Document how to regenerate code after schema changes",
+                "Document the generated file locations for web and mobile"
+            ],
+            "priority": 19,
+            "passes": true,
+            "notes": "Created comprehensive docs/schema-driven-development.md with workflow diagram, all acceptance criteria documented."
+        },
+        {
+            "id": "US-020",
+            "title": "Validate Schema Consistency",
+            "description": "As a developer, I need to ensure schemas are valid and generators work correctly.",
+            "acceptanceCriteria": [
+                "Add schema validation to CI/build process",
+                "Invalid schemas cause build to fail with clear error message",
+                "Verify generated TypeScript compiles without errors",
+                "Verify generated Dart compiles without errors (if Flutter SDK available)"
+            ],
+            "priority": 20,
+            "passes": true,
+            "notes": "Created validate-schemas.ts script. prebuild hook runs validation before generation. Invalid schemas exit with code 1 and clear error messages."
+        }
+    ]
+}

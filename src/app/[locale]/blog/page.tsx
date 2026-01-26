@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslations } from 'next-intl';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export default function Blog() {
-  const { t } = useLanguage();
+  const t = useTranslations();
 
   const blogPosts = [
     {

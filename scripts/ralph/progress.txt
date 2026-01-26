@@ -1,0 +1,315 @@
+## Codebase Patterns
+- Types: Use src/types/index.ts for imports; generated types use string dates, runtime types (EventEntity, DiscipleshipClass) use Date objects
+- next-intl v4 uses `requestLocale` (not `locale`) in getRequestConfig - must await it
+- Middleware matcher pattern: `'/(vi|en)/:path*'` for locale routes
+- Messages JSON files go in `/messages` directory at project root
+- Translation keys use nested structure (e.g., `admin.events.title`) - access via `t('admin.events.title')` or `t('title')` with namespace
+- Escape quotes in JSX: `&apos;` for apostrophes, `&quot;` for double quotes
+- Locale layout uses `await params` pattern (Next.js 15 style): `const { locale } = await params;`
+- Root layout remains minimal (html/body only), providers go in locale layout
+- SSG: `generateStaticParams` in layout propagates to all child pages - no need to add it to each page
+- Server Components use `getTranslations('namespace')` from 'next-intl/server', Client Components use `useTranslations('namespace')`
+- useTranslations() returns function directly: `const t = useTranslations()` (not `const { t } = ...`)
+- Use `defineRouting()` in src/i18n/routing.ts and `createNavigation(routing)` in src/i18n/navigation.ts for locale-aware navigation
+- For locale switching: use `useRouter` from '@/i18n/navigation' with `router.replace(pathname, { locale: nextLocale })`
+- next-intl middleware automatically sets NEXT_LOCALE cookie for language persistence
+- SEO: Use `generateMetadata` in locale layout with `getTranslations({ locale, namespace: 'metadata' })` for localized metadata
+- hreflang alternates: Use `metadata.alternates.languages` object (not manual link tags) for Next.js to generate hreflang links
+- Always verify translation keys match between components and JSON files - missing keys cause runtime MISSING_MESSAGE errors
+- Schema generators output to: TypeScript→src/types/generated/, Dart→church_app/lib/data/models/generated/, Rules→firestore/
+
+---
+
+## 2026-01-19 - US-001
+Thread: https://ampcode.com/threads/T-019bd940-895a-75d9-b57a-d3f53daaeeb6
+- Installed next-intl package (v4.7.0)
+- Created src/i18n.ts with getRequestConfig for locale handling
+- Created src/middleware.ts for locale detection and routing
+- Updated next.config.js with next-intl plugin wrapper
+- Created /messages/en.json and /messages/vi.json (placeholder content for US-002)
+- Added .eslintrc.json with next/core-web-vitals config
+- Files changed: package.json, package-lock.json, next.config.js, src/i18n.ts, src/middleware.ts, messages/en.json, messages/vi.json, .eslintrc.json
+- **Learnings for future iterations:**
+  - next-intl v4 API: use `requestLocale` instead of `locale` in getRequestConfig callback
+  - Must await requestLocale before using it
+  - Plugin pattern: `withNextIntl(nextConfig)` wraps the config
+---
+
+## 2026-01-19 - US-002
+Thread: https://ampcode.com/threads/T-019bd942-6d24-7202-8a2e-4874631979cc
+- Extracted all 100+ translations from LanguageContext.tsx into JSON files
+- Created complete /messages/en.json with nested structure (church, navigation, hero, welcome, ministries, stories, events, contact, footer, admin)
+- Created complete /messages/vi.json with matching structure
+- Fixed pre-existing ESLint errors (unescaped quotes/apostrophes in JSX)
+- Files changed: messages/en.json, messages/vi.json, ContactForm.tsx, Welcome.tsx, ClassesList.tsx, LocationsList.tsx
+- **Learnings for future iterations:**
+  - Translation keys use nested structure (e.g., `admin.events.title`) not flat dot notation
+  - Must escape quotes in JSX: use `&apos;` for apostrophes, `&quot;` for double quotes
+---
+
+## 2026-01-19 - US-003
+Thread: https://ampcode.com/threads/T-019bd945-6b16-74d2-a25c-8ed71cdba27b
+- Created src/app/[locale]/ directory structure
+- Moved page.tsx, login/, admin/, blog/, unauthorized/ to [locale]
+- Created src/app/[locale]/layout.tsx with NextIntlClientProvider and locale handling
+- Updated root layout.tsx to be minimal (no providers - they moved to locale layout)
+- Files changed: src/app/layout.tsx, src/app/[locale]/layout.tsx, plus all moved pages
+- **Learnings for future iterations:**
+  - No privacy page existed (PRD acceptance criteria mentioned it but it wasn't there)
+  - Locale layout params use Promise pattern: `params: Promise<{ locale: string }>` and must `await params`
+  - NextIntlClientProvider wraps client components for translations to work
+---
+
+## 2026-01-19 - US-004
+Thread: https://ampcode.com/threads/T-019bd947-c7ee-7077-9d7d-13ba52a04669
+- Verified SSG is already working from US-003 implementation
+- `generateStaticParams` in [locale]/layout.tsx handles both locales
+- Build output shows ● (SSG) for all routes: /en, /vi, /en/admin, etc.
+- No code changes needed - functionality was pre-existing
+- **Learnings for future iterations:**
+  - `export const dynamic = 'force-static'` only works in Server Components, not 'use client' files
+  - SSG happens automatically when generateStaticParams is defined in layout
+  - Client components can still be SSG - they're pre-rendered and hydrated
+---
+
+## 2026-01-19 - US-005
+Thread: https://ampcode.com/threads/T-019bd949-ea17-72d6-9177-4883bf9f9e36
+- Converted src/app/[locale]/page.tsx to Server Component (removed 'use client' and useLanguage)
+- Created src/app/[locale]/privacy/page.tsx as a pure Server Component using `getTranslations`
+- Added privacy translations to messages/en.json and messages/vi.json
+- Files changed: src/app/[locale]/page.tsx, src/app/[locale]/privacy/page.tsx, messages/en.json, messages/vi.json
+- **Learnings for future iterations:**
+  - Server Components can render Client Components as children - they don't need translations themselves
+  - `getTranslations('namespace')` returns a function that works like `t('key')` for server-side
+  - Privacy page shows 204 B size in build output - pure Server Component with minimal JS
+---
+
+## 2026-01-19 - US-006
+Thread: https://ampcode.com/threads/T-019bd94c-7bcc-706a-8bf3-7d21e1e037be
+- Migrated all client components from useLanguage() to useTranslations() from next-intl
+- Updated components: Welcome, Header, Footer, Hero, Ministries, Stories, ContactForm
+- Updated pages: blog/page.tsx, admin/page.tsx, admin/discipleship/page.tsx
+- NextIntlClientProvider was already set up in [locale]/layout.tsx from US-003
+- Files changed: 12 component/page files
+- **Learnings for future iterations:**
+  - `useTranslations()` returns a function directly (not `{ t }` like useLanguage)
+  - Can use `useTranslations()` without namespace for dot-notation keys like `t('welcome.title')`
+  - Or use `useTranslations('welcome')` then `t('title')` for namespace-scoped access
+  - LanguageToggle still uses useLanguage() for language/setLanguage - that's separate from translations
+---
+
+## 2026-01-19 - US-007
+Thread: https://ampcode.com/threads/T-019bd94e-975d-7719-9059-d905d5de3710
+- Created src/i18n/routing.ts with `defineRouting()` for centralized routing config
+- Created src/i18n/navigation.ts with `createNavigation(routing)` for locale-aware navigation utilities
+- Updated LanguageToggle to use `useRouter` and `usePathname` from navigation.ts
+- Toggle now uses `router.replace(pathname, { locale: nextLocale })` for URL-based locale switching
+- Updated src/i18n.ts to use routing config and `hasLocale()` helper
+- Updated src/middleware.ts to use routing config
+- Updated [locale]/layout.tsx to use routing config and `hasLocale()`
+- Files changed: src/components/LanguageToggle.tsx, src/i18n.ts, src/i18n/routing.ts, src/i18n/navigation.ts, src/middleware.ts, src/app/[locale]/layout.tsx
+- **Learnings for future iterations:**
+  - next-intl middleware automatically sets NEXT_LOCALE cookie for locale persistence
+  - `createNavigation(routing)` exports Link, redirect, usePathname, useRouter, getPathname
+  - For programmatic locale switching: `router.replace(pathname, { locale: nextLocale })`
+  - `useLocale()` from next-intl returns current locale in client components
+  - Use `useTransition()` for pending state during navigation
+---
+
+## 2026-01-19 - US-008
+Thread: https://ampcode.com/threads/T-019bd951-3f03-7251-8367-5b337e0f4cfd
+- Moved html/body tags from root layout to [locale]/layout.tsx
+- Added `lang={locale}` attribute to html element
+- Created generateMetadata function with locale-aware title, description, keywords
+- Added hreflang alternate links via metadata.alternates.languages (en, vi, x-default)
+- Added OpenGraph locale (vi_VN/en_US) and alternateLocale
+- Added metadata translations to messages/en.json and messages/vi.json
+- Simplified root layout.tsx to just return children
+- Files changed: src/app/layout.tsx, src/app/[locale]/layout.tsx, messages/en.json, messages/vi.json
+- **Learnings for future iterations:**
+  - `generateMetadata` in locale layout can use `getTranslations({ locale, namespace })` for localized metadata
+  - Use `metadata.alternates.languages` for hreflang links, not manual link tags
+  - Root layout can return just `{children}` when locale layout handles html/body
+  - OpenGraph uses `vi_VN`/`en_US` format (underscore), not `vi-VN` (hyphen)
+---
+
+## 2026-01-19 - US-009
+Thread: https://ampcode.com/threads/T-019bd953-3905-76de-9e2c-d4dc7c5470c3
+- Deleted src/contexts/LanguageContext.tsx (378 lines of unused code)
+- Removed LanguageProvider wrapper from src/app/[locale]/layout.tsx
+- All components already migrated to next-intl in US-006, so no component changes needed
+- Files changed: src/app/[locale]/layout.tsx, deleted src/contexts/LanguageContext.tsx
+- **Learnings for future iterations:**
+  - Previous iterations (US-006, US-007) already migrated all useLanguage() calls to next-intl
+  - Clean-up stories may be simpler than expected if prior work was thorough
+---
+
+## 2026-01-19 - US-010
+Thread: https://ampcode.com/threads/T-019bd954-7fb3-7320-a9d2-7810ca063912
+- Found and fixed missing `contact.description` translation key in both en.json and vi.json
+- Verified all pages render correctly:
+  - /en homepage: correct lang="en", English title, English welcome text
+  - /vi homepage: correct lang="vi", Vietnamese title, Vietnamese welcome text
+  - /en/privacy: correct lang="en", shows "Privacy Policy"
+  - /vi/privacy: correct lang="vi", shows "Chính Sách Bảo Mật"
+  - /en/admin: shows "Admin Dashboard"
+  - /vi/admin: shows "Bảng Điều Khiển"
+- No console errors after fix
+- Files changed: messages/en.json, messages/vi.json
+- **Learnings for future iterations:**
+  - Components may use translation keys that differ from JSON structure (e.g., `contact.description` vs `contact.subtitle`)
+  - Always run the production server to catch missing translation runtime errors - build may pass but runtime fails
+---
+
+## 2026-01-20 - US-011
+Thread: https://ampcode.com/threads/T-019bdb8d-5ec2-7613-826d-c37625abc3be
+- Created /schemas directory at project root
+- Created schemas/README.md with comprehensive documentation:
+  - Schema file listing and purposes
+  - JSON Schema Draft 2020-12 conventions (required fields, nullable types, date formats)
+  - Generation workflow commands (generate:all, generate:types, generate:dart, generate:rules)
+  - Instructions for adding new schemas
+  - Example schema template
+- Files changed: schemas/README.md
+- **Learnings for future iterations:**
+  - Existing types in src/types/event.types.ts and discipleship.types.ts serve as reference for schema creation
+  - Use `["string", "null"]` pattern in JSON Schema for optional nullable fields
+---
+
+## 2026-01-20 - US-012
+Thread: https://ampcode.com/threads/T-019bdb8e-6daf-777d-97db-b42811f334da
+- Created schemas/event.schema.json following JSON Schema Draft 2020-12
+- Included all 13 Event fields from EventEntity interface in src/types/event.types.ts
+- Required fields: id, title, isActive, recurring, order
+- Optional nullable fields use `["string", "null"]` type
+- Added format annotations: uri for image URLs, date-time for startDateTime/endDateTime
+- Added additionalProperties: false to enforce strict schema validation
+- Files changed: schemas/event.schema.json
+- **Learnings for future iterations:**
+  - Use `format: "uri"` for URL fields and `format: "date-time"` for ISO 8601 timestamps
+  - `additionalProperties: false` prevents extra fields in validated data
+---
+
+## 2026-01-20 - US-013
+Thread: https://ampcode.com/threads/T-019bdb8f-cfcc-7576-a5a3-0af0225a4b7a
+- Created schemas/discipleship-course.schema.json with id, name, description fields
+- Created schemas/discipleship-location.schema.json with id, courseId, name, thumbnailImageUrl fields
+- Created schemas/discipleship-class.schema.json with id, courseId, locationId, startTime, endTime, contact, passage fields
+- All schemas follow JSON Schema Draft 2020-12 format
+- Required fields based on discipleship.types.ts: id always required, optional fields use `["string", "null"]` type
+- Class schema uses `format: "date-time"` for startTime/endTime, location schema uses `format: "uri"` for thumbnailImageUrl
+- Files changed: schemas/discipleship-course.schema.json, schemas/discipleship-location.schema.json, schemas/discipleship-class.schema.json
+- **Learnings for future iterations:**
+  - TypeScript `Date` type maps to `format: "date-time"` string in JSON Schema
+  - Keep schema structure flat (no nested objects) for simpler code generation
+  - For ESM scripts: use `fileURLToPath(import.meta.url)` to get __dirname equivalent
+  - json-schema-to-typescript generates `string | null` for nullable fields correctly
+---
+
+## 2026-01-20 - US-014
+Thread: https://ampcode.com/threads/T-019bdb90-c5c7-76a9-8cc2-f7243eca6d5b
+- Installed json-schema-to-typescript and ts-node as dev dependencies
+- Created scripts/generate-types.ts that reads all *.schema.json files
+- Script outputs TypeScript interfaces to src/types/generated/
+- Generated 4 type files (event.ts, discipleship-*.ts) plus index.ts barrel export
+- Added npm script: generate:types
+- Files changed: package.json, package-lock.json, scripts/generate-types.ts, src/types/generated/*.ts
+- **Learnings for future iterations:**
+  - ts-node with --esm flag requires `fileURLToPath(import.meta.url)` pattern for __dirname
+  - json-schema-to-typescript automatically handles nullable union types correctly
+  - Generated types use `string | null` for optional nullable fields (matches existing types)
+- Dart filenames use underscores (e.g., `discipleship_class.dart`), not hyphens - Dart convention
+- Custom Dart generator is simpler than quicktype dependency; generates fromJson/toJson/copyWith/toString/==
+---
+
+## 2026-01-20 - US-015
+Thread: https://ampcode.com/threads/T-019bdb92-91a8-75f5-9e4b-97a4b269ca0d
+- Created scripts/generate-dart.ts custom generator (no external dependencies)
+- Generator reads all *.schema.json files and outputs Dart classes
+- Output path: /Users/nl/projects/church_app/lib/data/models/generated/
+- Generated classes include: fromJson(), toJson(), copyWith(), toString(), ==, hashCode
+- Null-safe based on required/optional fields: required non-nullable use `required`, optional use `?`
+- DateTime fields properly handle ISO 8601 parsing/serialization
+- Added npm script: generate:dart
+- Dart filenames use underscores for Dart convention compliance
+- Files changed: package.json, scripts/generate-dart.ts
+- **Learnings for future iterations:**
+  - Dart filenames must use underscores not hyphens (file_names lint rule)
+  - Custom generator avoids quicktype dependency overhead
+  - copyWith params should always be nullable (`String? id`) to allow passing null for "no change"
+---
+
+## 2026-01-20 - US-016
+Thread: https://ampcode.com/threads/T-019bdb95-3ed0-73de-896b-c7bd9efdd148
+- Created scripts/generate-rules.ts following same patterns as generate-types.ts and generate-dart.ts
+- Generates validation helper functions for Firestore security rules
+- For each schema generates:
+  - `isValid{SchemaTitle}(data)` - validates required fields exist and all field types are correct
+  - `{schemaTitle}HasOnlyFields(data)` - ensures no extra fields are present
+- Output to /firestore/validation.rules with complete example rules
+- Created /firestore/README.md documenting the generated functions
+- Added npm script: generate:rules
+- Files changed: package.json, scripts/generate-rules.ts, firestore/validation.rules, firestore/README.md
+- **Learnings for future iterations:**
+  - Firestore rules use `is string`, `is number`, `is bool` for type checks
+  - Use `'fieldName' in data` to check field existence
+  - For optional/nullable fields: `(!('field' in data) || data.field == null || data.field is type)`
+  - `data.keys().hasOnly([...])` prevents extra fields
+---
+
+## 2026-01-20 - US-017
+Thread: https://ampcode.com/threads/T-019bdba1-d883-7439-879c-264b9837a872
+- Added npm script `generate:all` that runs all three generators sequentially
+- Added npm script `prebuild` that auto-runs generate:all before `npm run build`
+- Tested: generate:all completes in ~2.2 seconds (well under 10 second requirement)
+- Verified: prebuild hook runs automatically when `npm run build` is executed
+- Files changed: package.json
+- **Learnings for future iterations:**
+  - npm lifecycle scripts: `prebuild` automatically runs before `build` command
+  - Use `&&` chaining for sequential npm script execution in generate:all
+---
+
+## 2026-01-20 - US-018
+Thread: https://ampcode.com/threads/T-019bdba8-6826-70af-9a09-5a4fbb58a8e9
+- Created src/types/index.ts as central type export consolidating generated and manual types
+- Updated event.types.ts to extend EventEntity from generated Event type (overrides Date fields)
+- Updated discipleship.types.ts to extend DiscipleshipClass from generated type (overrides Date fields)
+- Re-exported DiscipleshipCourse and DiscipleshipLocation directly from generated (no changes needed)
+- Manual types kept for form data (EventFormData, DiscipleshipFormData, etc.) since not in schemas
+- Files changed: src/types/index.ts (new), src/types/event.types.ts, src/types/discipleship.types.ts
+- **Learnings for future iterations:**
+  - Generated types use `string` for date-time fields (JSON Schema format), runtime needs `Date` objects
+  - Use `Omit<Generated, 'dateField'> & { dateField: Date }` pattern to extend generated types with Date fields
+  - Keep manual type files as extensions; index.ts acts as facade for consumers
+---
+
+## 2026-01-20 - US-019
+Thread: https://ampcode.com/threads/T-019bdbab-2ee0-74ff-b570-d384de016e2d
+- Created docs/schema-driven-development.md with comprehensive documentation
+- Documented: workflow overview with ASCII diagram, generated file locations for web/mobile/firestore
+- Documented: how to add new fields to existing schemas (with example)
+- Documented: how to create new schemas (step-by-step with template)
+- Documented: regeneration commands and when to run them
+- Documented: schema conventions (field types, required vs optional, naming)
+- Documented: runtime vs generated types and Date conversion patterns
+- Documented: troubleshooting section for common issues
+- Files changed: docs/schema-driven-development.md (new)
+- **Learnings for future iterations:**
+  - Documentation files don't need any code changes - just create markdown
+  - Good to include ASCII diagram for workflow visualization
+---
+
+## 2026-01-20 - US-020
+Thread: https://ampcode.com/threads/T-019bdbac-9712-7732-9ff7-bcba965dc321
+- Created scripts/validate-schemas.ts to validate JSON schemas
+- Validates: JSON parsing, $schema declaration, title (required for codegen), type=object, properties exist, required fields
+- Invalid schemas cause exit code 1 with clear error messages
+- Added npm script: validate:schemas
+- Updated prebuild to run validate:schemas before generate:all
+- Verified: npm run build runs validation → generation → build successfully
+- Verified: npm run type-check passes (generated TypeScript compiles)
+- Files changed: scripts/validate-schemas.ts (new), package.json
+- **Learnings for future iterations:**
+  - Schema validation should check for codegen-specific requirements (title, properties, type=object)
+  - prebuild hook order: validate first, then generate, then build
+---

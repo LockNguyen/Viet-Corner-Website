@@ -61,7 +61,7 @@ export default function LocationsList({ courseId }: LocationsListProps) {
 
       {locations.length === 0 ? (
         <div className="text-center py-8 bg-gray-50 rounded-lg ml-8">
-          <p className="text-gray-500 text-sm">No locations added yet. Click "Add Location" to start.</p>
+          <p className="text-gray-500 text-sm">No locations added yet. Click &quot;Add Location&quot; to start.</p>
         </div>
       ) : (
         <div className="space-y-3">

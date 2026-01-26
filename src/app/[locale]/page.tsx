@@ -1,6 +1,3 @@
-'use client';
-
-import { useLanguage } from '@/contexts/LanguageContext';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Welcome from '@/components/Welcome';
@@ -9,9 +6,7 @@ import Stories from '@/components/Stories';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 
-export default function Home() {
-  const { t } = useLanguage();
-
+export default async function Home() {
   return (
     <div className="min-h-screen bg-white">
       <Header />

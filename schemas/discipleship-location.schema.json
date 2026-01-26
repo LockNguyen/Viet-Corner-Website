@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "discipleship-location.schema.json",
+  "title": "DiscipleshipLocation",
+  "description": "A location where a discipleship course is offered",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the location"
+    },
+    "courseId": {
+      "type": "string",
+      "description": "Reference to the parent course"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name of the location"
+    },
+    "thumbnailImageUrl": {
+      "type": ["string", "null"],
+      "format": "uri",
+      "description": "Optional thumbnail image URL for the location"
+    }
+  },
+  "required": ["id", "courseId", "name"],
+  "additionalProperties": false
+}

@@ -4,10 +4,10 @@ import Link from 'next/link';
 import AuthGuard from '@/components/AuthGuard';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { useLanguage } from '@/contexts/LanguageContext';
+import { useTranslations } from 'next-intl';
 
 export default function AdminDashboard() {
-  const { t } = useLanguage();
+  const t = useTranslations();
 
   const adminCards = [
     {
